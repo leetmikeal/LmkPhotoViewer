@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Primitive\LmkBit.cs" />
     <Compile Include="Primitive\LmkMatrix.cs" />
     <Compile Include="Primitive\LmkPoint2d.cs" />
     <Compile Include="Primitive\LmkRectangle.cs" />

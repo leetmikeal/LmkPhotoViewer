@@ -2,6 +2,6 @@
 #include "LmkRegion.h"
 
 
-LmkRegion::LmkRegion()
+LmkImageClrLib::LmkRegion::LmkRegion()
 {
 }

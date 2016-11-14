@@ -2,6 +2,6 @@
 #include "LmkVector.h"
 
 
-LmkVector::LmkVector()
+LmkImageClrLib::LmkVector::LmkVector()
 {
 }

@@ -2,6 +2,6 @@
 #include "LmkImage.h"
 
 
-LmkImage::LmkImage()
+LmkImageClrLib::LmkImage::LmkImage()
 {
 }

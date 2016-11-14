@@ -2,6 +2,6 @@
 #include "LmkPoint2d.h"
 
 
-LmkPoint2d::LmkPoint2d()
+LmkImageClrLib::LmkPoint2d::LmkPoint2d()
 {
 }

@@ -42,6 +42,9 @@
     <ClInclude Include="LmkPoint2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LmkBit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LmkImageClrLib.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LmkPoint2d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LmkBit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

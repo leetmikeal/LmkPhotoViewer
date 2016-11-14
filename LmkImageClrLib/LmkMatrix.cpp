@@ -2,6 +2,6 @@
 #include "LmkMatrix.h"
 
 
-LmkMatrix::LmkMatrix()
+LmkImageClrLib::LmkMatrix::LmkMatrix()
 {
 }

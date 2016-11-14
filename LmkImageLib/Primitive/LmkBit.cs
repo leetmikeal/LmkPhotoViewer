@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace LmkImageLib
 {
     /// <summary>
-    /// region, same as 1-bit image
+    /// 1-bit image
     /// </summary>
     [DataContract(Name = "")]
-    public class LmkRegion : IDisposable
+    public class LmkBit : IDisposable
     {
-        private LmkImageClrLib.LmkRegion body;
+        private LmkImageClrLib.LmkBit body;
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
@@ -34,7 +34,7 @@ namespace LmkImageLib
             }
         }
 
-        ~LmkRegion()
+        ~LmkBit()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(false);

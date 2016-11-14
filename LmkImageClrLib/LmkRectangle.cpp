@@ -2,6 +2,6 @@
 #include "LmkRectangle.h"
 
 
-LmkRectangle::LmkRectangle()
+LmkImageClrLib::LmkRectangle::LmkRectangle()
 {
 }

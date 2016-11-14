@@ -5,12 +5,12 @@ using namespace System;
 namespace LmkImageClrLib {
 
 	/// <summary>
-	/// Affine trans matrix
+	/// 1-bit image
 	/// </summary>
-	public ref class LmkMatrix
+	public ref class LmkBit
 	{
 	public:
-		LmkMatrix();
+		LmkBit();
 	};
 
 }

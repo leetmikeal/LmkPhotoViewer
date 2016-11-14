@@ -132,6 +132,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LmkBit.h" />
     <ClInclude Include="LmkImage.h" />
     <ClInclude Include="LmkImageClrLib.h" />
     <ClInclude Include="LmkMatrix.h" />
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="LmkBit.cpp" />
     <ClCompile Include="LmkImage.cpp" />
     <ClCompile Include="LmkImageClrLib.cpp" />
     <ClCompile Include="LmkMatrix.cpp" />
