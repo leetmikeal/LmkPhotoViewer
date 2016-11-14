@@ -132,13 +132,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LmkImage.h" />
     <ClInclude Include="LmkImageClrLib.h" />
+    <ClInclude Include="LmkMatrix.h" />
+    <ClInclude Include="LmkPoint2d.h" />
+    <ClInclude Include="LmkRectangle.h" />
+    <ClInclude Include="LmkRegion.h" />
+    <ClInclude Include="LmkVector.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="LmkImage.cpp" />
     <ClCompile Include="LmkImageClrLib.cpp" />
+    <ClCompile Include="LmkMatrix.cpp" />
+    <ClCompile Include="LmkPoint2d.cpp" />
+    <ClCompile Include="LmkRectangle.cpp" />
+    <ClCompile Include="LmkRegion.cpp" />
+    <ClCompile Include="LmkVector.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

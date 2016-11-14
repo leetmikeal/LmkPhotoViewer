@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 namespace LmkImageLib
 {
     /// <summary>
-    /// Generic image class
-    /// 
-    /// 8-bit multi channel
+    /// region, 1-bit channel image
     /// </summary>
     [DataContract(Name = "")]
-    public class LmkImage
+    public class LmkRegion
     {
     }
 }

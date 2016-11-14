@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 namespace LmkImageLib
 {
     /// <summary>
-    /// Generic image class
-    /// 
-    /// 8-bit multi channel
+    /// 2D point
     /// </summary>
     [DataContract(Name = "")]
-    public class LmkImage
+    public class LmkPoint2d
     {
     }
 }
