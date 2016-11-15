@@ -45,6 +45,12 @@
     <ClInclude Include="LmkBit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LmkBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdafxUm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LmkImageClrLib.cpp">
@@ -75,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LmkBit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LmkBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdafxUm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

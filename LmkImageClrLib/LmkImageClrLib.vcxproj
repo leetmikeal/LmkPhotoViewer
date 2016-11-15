@@ -132,6 +132,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LmkBase.h" />
     <ClInclude Include="LmkBit.h" />
     <ClInclude Include="LmkImage.h" />
     <ClInclude Include="LmkImageClrLib.h" />
@@ -142,9 +143,11 @@
     <ClInclude Include="LmkVector.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="StdafxUm.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="LmkBase.cpp" />
     <ClCompile Include="LmkBit.cpp" />
     <ClCompile Include="LmkImage.cpp" />
     <ClCompile Include="LmkImageClrLib.cpp" />
@@ -159,6 +162,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StdafxUm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

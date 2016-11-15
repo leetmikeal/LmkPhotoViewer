@@ -1,18 +1,15 @@
 #pragma once
-
 #include "Stdafx.h"
-
-#include "LmkBase.h"
 
 namespace LmkImageClrLib {
 
 	/// <summary>
-	/// 2D line, point array
+	/// basic all data class
 	/// </summary>
-	public ref class LmkVector : LmkBase
+	public ref class LmkBase
 	{
 	public:
-		LmkVector();
+		LmkBase();
 	};
 
 }
