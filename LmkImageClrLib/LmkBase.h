@@ -6,7 +6,7 @@ namespace LmkImageClrLib {
 	/// <summary>
 	/// basic all data class
 	/// </summary>
-	public ref class LmkBase
+	public ref class LmkBase abstract
 	{
 	public:
 		LmkBase();

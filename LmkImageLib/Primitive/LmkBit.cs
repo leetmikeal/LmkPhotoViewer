@@ -11,41 +11,40 @@ namespace LmkImageLib
     /// 1-bit image
     /// </summary>
     [DataContract(Name = "")]
-    public class LmkBit : IDisposable
+    public class LmkBit : ICloneable
     {
-        private LmkImageClrLib.LmkBit body;
+        private LmkImageClrLib.LmkBit body = new LmkImageClrLib.LmkBit();
 
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
+        /// <summary>
+        /// Copy constructor
+        /// </summary>
+        /// <param name="self">copied object</param>
+        public LmkBit(LmkBit self)
+            :this(self.body)
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                disposedValue = true;
-            }
         }
 
-        ~LmkBit()
+        /// <summary>
+        /// Copy constructor
+        /// </summary>
+        /// <param name="bodySource"></param>
+        internal LmkBit(LmkImageClrLib.LmkBit bodySource)
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
+            this.body = body.Clone();
         }
 
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
+        #region ICloneable
+
+        public LmkBit Clone()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            return new LmkBit(this);
         }
-        #endregion
+
+        object ICloneable.Clone()
+        {
+            return this.Clone();
+        }
+
+        #endregion ICloneable
     }
 }
