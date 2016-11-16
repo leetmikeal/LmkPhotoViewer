@@ -4,6 +4,9 @@
 
 #pragma once
 
+//#include <cstdio>
+//#include <cstring>
+
 //using namespace System;
 //using namespace LmkImageClrLib;
 //using namespace LmkImageClrLibUm;
@@ -11,6 +14,14 @@
 typedef unsigned char byte;
 
 namespace LmkImageClrLib {
+
+	ref class LmkRectangle;
+	ref class LmkRegion;
+	ref class LmkVector;
+	ref class LmkBit;
+	ref class LmkImage;
+	ref class LmkMatrix;
+	ref class LmkPoint2d;
 
 	/// <summary>
 	/// Image color type

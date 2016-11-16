@@ -16,6 +16,10 @@ namespace LmkImageClrLib {
 		/// Constructor
 		/// </summary>
 		LmkRectangle();
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		LmkRectangle(double row, double column, double width, double height);
 
 		/// <summary>
 		/// Row

@@ -4,6 +4,7 @@
 #include "StdafxUm.h"
 
 #include "LmkBase.h"
+#include "LmkRectangle.h"
 
 using namespace System;
 using namespace LmkImageClrLibUm;
@@ -21,24 +22,21 @@ namespace LmkImageClrLib {
 		/// </summary>
 		LmkRegion();
 		/// <summary>
+		/// Constructor
+		/// </summary>
+		LmkRegion(int row, int column, int width, int height);
+		/// <summary>
 		/// Destructor
 		/// </summary>
-		~LmkRegion() {
-			// release managed resource
-			run_length* Rl = (run_length*)(void*)RunLength;
-			delete Rl->run_ptr;
-			delete Rl;
-
-			this->!LmkRegion();
-		}
+		~LmkRegion();
 		/// <summary>
 		/// Finalizer
 		/// </summary>
-		!LmkRegion() {
-			// release unmanaged resource
-		}
+		!LmkRegion();
 
-		property IntPtr RunLength;
+		property LmkRectangle^ SmallestRectangle { LmkRectangle^ get(); }
+	private:
+		property run_length* rl;
 	};
 
 }

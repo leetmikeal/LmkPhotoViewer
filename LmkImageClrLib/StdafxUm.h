@@ -21,5 +21,23 @@ namespace LmkImageClrLibUm {
 		run* run_ptr;
 	} run_length;
 
+	/// <summary>
+	/// 2D point
+	/// </summary>
+	typedef struct coor2d
+	{
+		double x;
+		double y;
+	} coor2d;
+
+	/// <summary>
+	/// 2D point array
+	/// </summary>
+	typedef struct coor_array
+	{
+		int size;
+		coor2d* arr;
+	} coor_array;
+
 }
 
