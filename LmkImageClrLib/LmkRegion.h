@@ -26,7 +26,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		LmkRegion(LmkRectangleDbl^ rectangle);
+		LmkRegion(LmkRectangleInt^ rectangle);
 		/// <summary>
 		/// from rectangle coordinate
 		/// </summary>
@@ -43,7 +43,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Smallest Rectangle
 		/// </summary>
-		property LmkRectangleDbl^ SmallestRectangle { LmkRectangleDbl^ get(); }
+		property LmkRectangleInt^ SmallestRectangle { LmkRectangleInt^ get(); }
 		/// <summary>
 		/// Region area size
 		/// </summary>
@@ -60,7 +60,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Smallest rectangle cache
 		/// </summary>
-		LmkRectangleDbl^ smallestRectangle;
+		LmkRectangleInt^ smallestRectangle;
 	};
 
 }

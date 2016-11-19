@@ -15,12 +15,14 @@ typedef unsigned char byte;
 
 namespace LmkImageClrLib {
 
+	ref class LmkRectangleInt;
 	ref class LmkRectangleDbl;
 	ref class LmkRegion;
 	ref class LmkVector;
 	ref class LmkBit;
 	ref class LmkImage;
 	ref class LmkMatrix;
+	value class LmkPointInt;
 	value class LmkPointDbl;
 
 	/// <summary>

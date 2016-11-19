@@ -8,7 +8,7 @@
 namespace LmkImageClrLib {
 
 	/// <summary>
-	/// Rectangle
+	/// Double type rectangle
 	/// </summary>
 	public ref class LmkRectangleDbl : LmkBase
 	{

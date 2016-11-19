@@ -51,6 +51,12 @@
     <ClInclude Include="LmkPointDbl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LmkPointInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LmkRectangleInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LmkImageClrLib.cpp">
@@ -87,6 +93,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LmkPointDbl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LmkPointInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LmkRectangleInt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

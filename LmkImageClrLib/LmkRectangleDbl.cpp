@@ -7,6 +7,10 @@ using namespace LmkImageClrLib;
 
 LmkRectangleDbl::LmkRectangleDbl()
 {
+	this->row    = 0.0;
+	this->column = 0.0;
+	this->width  = 0.0;
+	this->height = 0.0;
 }
 
 /// <summary>
@@ -24,11 +28,11 @@ LmkRectangleDbl::LmkRectangleDbl(LmkRectangleDbl^ rectangle)
 
 LmkRectangleDbl::LmkRectangleDbl(double row, double column, double width, double height)
 {
-	this->row = row;
+	this->row    = row;
 	this->column = column;
-	this->width = width;
+	this->width  = width;
 	this->height = height;
-	this->angle = 0;
+	this->angle  = 0.0;
 }
 
 LmkRectangleDbl^ LmkRectangleDbl::Clone()
