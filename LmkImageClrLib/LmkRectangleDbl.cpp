@@ -2,6 +2,7 @@
 #include "LmkRectangleDbl.h"
 #include "LmkRegion.h"
 #include "LmkVector.h"
+#include "LmkPointDbl.h"
 
 using namespace LmkImageClrLib;
 
@@ -40,23 +41,23 @@ LmkRectangleDbl^ LmkRectangleDbl::Clone()
 	return gcnew LmkRectangleDbl(this);
 }
 
-double LmkRectangleDbl::LmkRectangleDbl::Row::get()
+double LmkRectangleDbl::Row::get()
 {
 	return this->row;
 }
-double LmkRectangleDbl::LmkRectangleDbl::Column::get()
+double LmkRectangleDbl::Column::get()
 {
 	return this->column;
 }
-double LmkRectangleDbl::LmkRectangleDbl::Width::get()
+double LmkRectangleDbl::Width::get()
 {
 	return this->width;
 }
-double LmkRectangleDbl::LmkRectangleDbl::Height::get()
+double LmkRectangleDbl::Height::get()
 {
 	return this->height;
 }
-double LmkRectangleDbl::LmkRectangleDbl::Angle::get()
+double LmkRectangleDbl::Angle::get()
 {
 	return this->angle;
 }
@@ -65,5 +66,13 @@ LmkRectangleDbl^ LmkRectangleDbl::LmkRectangleDbl::SmallestRectangle::get()
 	LmkVector^ vector = gcnew LmkVector(this);
 	return vector->SmallestRectangle;
 }
+LmkPointDbl^ LmkRectangleDbl::Center::get()
+{
+	return gcnew LmkPointDbl(
+		this->column + this->width / 2.0,
+		this->row + this->height / 2.0
+	);
+}
+
 
 // -------------------------------------------------------------------------

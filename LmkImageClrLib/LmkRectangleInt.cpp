@@ -2,6 +2,7 @@
 #include "LmkRectangleInt.h"
 #include "LmkRegion.h"
 #include "LmkVector.h"
+#include "LmkPointDbl.h"
 
 using namespace LmkImageClrLib;
 
@@ -51,19 +52,26 @@ LmkRectangleDbl^ LmkRectangleInt::ToDouble()
 
 // -------------------------------------------------------------------------
 
-int LmkRectangleInt::LmkRectangleInt::Row::get()
+int LmkRectangleInt::Row::get()
 {
 	return this->row;
 }
-int LmkRectangleInt::LmkRectangleInt::Column::get()
+int LmkRectangleInt::Column::get()
 {
 	return this->column;
 }
-int LmkRectangleInt::LmkRectangleInt::Width::get()
+int LmkRectangleInt::Width::get()
 {
 	return this->width;
 }
-int LmkRectangleInt::LmkRectangleInt::Height::get()
+int LmkRectangleInt::Height::get()
 {
 	return this->height;
+}
+LmkPointDbl^ LmkRectangleInt::Center::get()
+{
+	return gcnew LmkPointDbl(
+		(double)this->column + (double)this->width / 2.0,
+		(double)this->row + (double)this->height / 2.0
+	);
 }

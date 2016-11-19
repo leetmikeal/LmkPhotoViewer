@@ -52,6 +52,10 @@ namespace LmkImageClrLib {
 		/// Height
 		/// </summary>
 		property int Height { int get(); }
+		/// <summary>
+		/// Center 2d coordinate
+		/// </summary>
+		property LmkPointDbl^ Center { LmkPointDbl^ get(); }
 	private:
 		int row;
 		int column;

@@ -56,6 +56,10 @@ namespace LmkImageClrLib {
 		/// Smallest rectangle. disabled rotation.
 		/// </summary>
 		property LmkRectangleDbl^ SmallestRectangle { LmkRectangleDbl^ get(); }
+		/// <summary>
+		/// Center 2d coordinate
+		/// </summary>
+		property LmkPointDbl^ Center { LmkPointDbl^ get(); }
 	private:
 		double row;
 		double column;
