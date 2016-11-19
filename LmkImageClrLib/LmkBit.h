@@ -23,17 +23,15 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Destructor
 		/// </summary>
-		~LmkBit() {
-			// release managed resource
-
-			this->!LmkBit();
-		}
+		~LmkBit();
 		/// <summary>
 		/// Finalizer
 		/// </summary>
-		!LmkBit() {
-			// release unmanaged resource
-		}
+		!LmkBit();
+		/// <summary>
+		/// Copy constructor
+		/// </summary>
+		LmkBit(LmkBit^ bit);
 		/// <summary>
 		/// Clone object
 		/// </summary>
@@ -43,69 +41,41 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Image bit width
 		/// </summary>
-		property int Width;
+		property int Width { int get(); }
 		/// <summary>
 		/// Image bit height
 		/// </summary>
-		property int Height;
+		property int Height { int get(); }
 		/// <summary>
 		/// Image bit size
 		/// </summary>
-		property int Size
-		{
-			int get()
-			{
-				return this->Width * this->Height;
-			}
-		}
+		property int Size { int get(); }
 		/// <summary>
 		/// byte length width
 		/// </summary>
-		property int WidthByte
-		{
-			int get()
-			{
-				double w = (double)this->Width / sizeof(byte);
-				return (int)floor(w);
-			}
-		}
+		property int WidthByte { int get(); }
 		/// <summary>
 		/// byte length height
 		/// </summary>
-		property int HeightByte
-		{
-			int get()
-			{
-				double h = (double)this->Height / sizeof(byte);
-				return (int)floor(h);
-			}
-		}
+		property int HeightByte { int get(); }
 		/// <summary>
 		/// Image bit size
 		/// </summary>
-		property int SizeByte
-		{
-			int get()
-			{
-				return this->WidthByte * this->HeightByte;
-			}
-		}
+		property int SizeByte { int get(); }
 		/// <summary>
 		/// Content
 		/// </summary>
-		property IntPtr^ Data;
+		property IntPtr^ Data { IntPtr^ get(); }
 		/// <summary>
 		/// Tags
-		/// </summary>
-		property String^ Tags;
+		/// </summary
+		/// >
+		property String^ Tags { String^ get(); }
 	private:
-		property byte* dataInstance {
-			byte* get()
-			{
-				byte* ptr = (byte*)Data->ToPointer();
-				return ptr;
-			}
-		}
+		int width;
+		int height;
+		byte* data;
+		String^ tags;
 	};
 
 }
