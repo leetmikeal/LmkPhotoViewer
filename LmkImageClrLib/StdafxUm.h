@@ -40,6 +40,7 @@ namespace LmkImageClrLibUm {
 		int size;
 		coor2d* arr;
 	} coor_array;
+
 	/// <summary>
 	/// Rotation of 2d coordinate 
 	/// </summary>
