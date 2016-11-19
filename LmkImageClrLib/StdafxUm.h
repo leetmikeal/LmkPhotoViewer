@@ -42,6 +42,19 @@ namespace LmkImageClrLibUm {
 	} coor_array;
 
 	/// <summary>
+	/// 2D Matrix
+	/// </summary>
+	typedef struct matrix2d
+	{
+		double m11;
+		double m12;
+		double offset1;
+		double m21;
+		double m22;
+		double offset2;
+	} matrix2d;
+
+	/// <summary>
 	/// Rotation of 2d coordinate 
 	/// </summary>
 	/// <param name="coor">original 2d coordinate</param>

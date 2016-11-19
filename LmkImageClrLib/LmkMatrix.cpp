@@ -2,13 +2,14 @@
 #include "LmkMatrix.h"
 
 using namespace LmkImageClrLib;
+using namespace LmkImageClrLibUm;
 
 /// <summary>
 /// Constructor
 /// </summary>
 LmkMatrix::LmkMatrix()
 {
-	this->elements = new double[6];
+	this->elements = new matrix2d();
 }
 
 /// <summary>
@@ -34,114 +35,111 @@ LmkMatrix::!LmkMatrix()
 /// </summary>
 LmkMatrix::LmkMatrix(double m11, double m12, double m21, double m22, double offset1, double offset2)
 {
-	double* elem = new double[6]
-		{
-			m11,
-			m12,
-			offset1,
-			m21,
-			m22,
-			offset2
-		};
-	this->elements = &elem[0];
+	this->elements = new matrix2d();
+	this->elements->m11 = m11;
+	this->elements->m12 = m12;
+	this->elements->m21 = m21;
+	this->elements->m22 = m22;
+	this->elements->offset1 = offset1;
+	this->elements->offset2 = offset2;
 }
 
 LmkMatrix^ LmkMatrix::Translate(double x, double y)
 {
 	return gcnew LmkMatrix(
-		this->elements[0] + x,
-		this->elements[1] + x,
-		this->elements[3] + y,
-		this->elements[4] + y,
-		this->elements[2] + x,
-		this->elements[5] + y
+		this->elements->m11 + x,
+		this->elements->m12 + x,
+		this->elements->m21 + y,
+		this->elements->m22 + y,
+		this->elements->offset1 + x,
+		this->elements->offset2 + y
 	);
 }
 LmkMatrix^ LmkMatrix::TranslatePre(double x, double y)
 {
-	double* e = this->elements;
+	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
-		e[0],
-		e[1],
-		e[3],
-		e[4],
-		e[0] * x + e[1] * y + e[2],
-		e[3] * x + e[4] * y + e[5]
+		e->m11,
+		e->m12,
+		e->m21,
+		e->m22,
+		e->m11 * x + e->m12 * y + e->offset1,
+		e->m21 * x + e->m22 * y + e->offset2
 	);
 }
 LmkMatrix^ LmkMatrix::Scale(double column, double row)
 {
 	return gcnew LmkMatrix(
-		this->elements[0] * column,
-		this->elements[1] * column,
-		this->elements[3] * row,
-		this->elements[4] * row,
-		this->elements[2] * column,
-		this->elements[5] * row
+		this->elements->m11 * column,
+		this->elements->m12 * column,
+		this->elements->m21 * row,
+		this->elements->m22 * row,
+		this->elements->offset1 * column,
+		this->elements->offset2 * row
 	);
 }
 LmkMatrix^ LmkMatrix::ScalePre(double column, double row)
 {
-	double* e = this->elements;
+	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
-		e[0] * column,
-		e[1] * row,
-		e[3] * column,
-		e[4] * row,
-		e[2],
-		e[5]
+		e->m11 * column,
+		e->m12 * row,
+		e->m21 * column,
+		e->m22 * row,
+		e->offset1,
+		e->offset2
 	);
 }
 LmkMatrix^ LmkMatrix::Rotate(double a)
 {
-	double* e = this->elements;
+	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
-		e[0] * cos(a) - e[3] * sin(a),
-		e[1] * cos(a) - e[4] * sin(a),
-		e[0] * sin(a) + e[3] * cos(a),
-		e[1] * sin(a) + e[4] * cos(a),
-		e[2] * cos(a) - e[5] * sin(a),
-		e[2] * sin(a) + e[5] * cos(a)
+		e->m11 * cos(a) - e->m21 * sin(a),
+		e->m12 * cos(a) - e->m22 * sin(a),
+		e->m11 * sin(a) + e->m21 * cos(a),
+		e->m12 * sin(a) + e->m22 * cos(a),
+		e->offset1 * cos(a) - e->offset2 * sin(a),
+		e->offset1 * sin(a) + e->offset2 * cos(a)
 	);
 }
 LmkMatrix^ LmkMatrix::RotatePre(double a)
 {
-	double* e = this->elements;
+	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
-		e[0] * cos(a) + e[1] * sin(a),
-		e[1] * cos(a) - e[0] * sin(a),
-		e[3] * cos(a) + e[4] * sin(a),
-		e[4] * cos(a) - e[3] * sin(a),
-		e[2],
-		e[5]
+		e->m11 * cos(a) + e->m12 * sin(a),
+		e->m12 * cos(a) - e->m11 * sin(a),
+		e->m21 * cos(a) + e->m22 * sin(a),
+		e->m22 * cos(a) - e->m21 * sin(a),
+		e->offset1,
+		e->offset2
 	);
 }
 
 
 double LmkMatrix::M11::get()
 {
-	return this->elements[0];
+	return this->elements->m11;
 }
 double LmkMatrix::M12::get()
 {
-	return this->elements[1];
+	return this->elements->m12;
 }
 double LmkMatrix::M21::get()
 {
-	return this->elements[3];
+	return this->elements->m21;
 
 }
 double LmkMatrix::M22::get()
 {
-	return this->elements[4];
+	return this->elements->m22;
 }
 double LmkMatrix::Offset1::get()
 {
-	return this->elements[2];
+	return this->elements->offset1;
 }
 double LmkMatrix::Offset2::get()
 {
-	return this->elements[5];
+	return this->elements->offset2;
 }
 LmkMatrix^ LmkMatrix::Identity::get()
 {

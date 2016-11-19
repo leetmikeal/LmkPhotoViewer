@@ -1,10 +1,13 @@
 #pragma once
 
 #include "Stdafx.h"
+#include "StdafxUm.h"
 
 #include <cmath>
 
 #include "LmkBase.h"
+
+using namespace LmkImageClrLibUm;
 
 namespace LmkImageClrLib {
 
@@ -104,7 +107,7 @@ namespace LmkImageClrLib {
 		property double Offset2 { double get(); }
 		property LmkMatrix^ Identity { LmkMatrix^ get(); }
 	private:
-		double* elements;
+		matrix2d* elements;
 	};
 
 }
