@@ -93,6 +93,9 @@ LmkMatrix^ LmkMatrix::Rotate(double a) {
 		e->offset1 * sin(a) + e->offset2 * cos(a)
 	);
 }
+LmkMatrix^ LmkMatrix::Rotate(double a, double x, double y) {
+	return this->Translate(-x, -y)->Rotate(a)->Translate(x, y);
+}
 LmkMatrix^ LmkMatrix::RotatePre(double a) {
 	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(

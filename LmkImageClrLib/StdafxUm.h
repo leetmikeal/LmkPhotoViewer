@@ -61,5 +61,12 @@ namespace LmkImageClrLibUm {
 	/// <param name="angle">counter-clockwise radian angle</param>
 	/// <returns>rotated coordinate</returns>
 	coor2d Rotate(coor2d coor, double angle);
+	/// <summary>
+	/// Rotation of 2d coordinate 
+	/// </summary>
+	/// <param name="coor">original 2d coordinate</param>
+	/// <param name="matrix">affine transform matrix</param>
+	/// <returns>transformed coordinate</returns>
+	coor2d Transform(coor2d coor, matrix2d* matrix);
 }
 

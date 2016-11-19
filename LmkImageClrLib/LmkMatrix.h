@@ -75,6 +75,14 @@ namespace LmkImageClrLib {
 		/// <returns>rotation matrix</returns>
 		LmkMatrix^ Rotate(double angle);
 		/// <summary>
+		/// Rotate
+		/// </summary>
+		/// <param name="angle">rotation angle [radian] (counter-clockwise)</param>
+		/// <param name="x">column of rotation center</param>
+		/// <param name="y">row of rotation center</param>
+		/// <returns>rotation matrix</returns>
+		LmkMatrix^ Rotate(double angle, double x, double y);
+		/// <summary>
 		/// Prepend rotate
 		/// </summary>
 		/// <param name="angle">rotation angle [radian] (counter-clockwise)</param>
@@ -108,7 +116,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Identity matrix
 		/// </summary>
-		property LmkMatrix^ Identity { LmkMatrix^ get(); }
+		property static LmkMatrix^ Identity { LmkMatrix^ get(); }
 		/// <summary>
 		/// Elements pointer
 		/// </summary>

@@ -6,6 +6,7 @@
 #include "LmkMatrix.h"
 
 using namespace LmkImageClrLib;
+using namespace LmkImageClrLibUm;
 
 /// <summary>
 /// Constructor
@@ -52,13 +53,21 @@ LmkVector::LmkVector(LmkRectangleDbl^ rectangle) {
 	base_coor[3].x = rectangle->Column;
 	base_coor[3].y = rectangle->Row + rectangle->Height;
 
+	// create rotation matrix
+	LmkPointDbl^ center = rectangle->Center;
+	LmkMatrix^ matrix = LmkMatrix::Identity;
+	matrix = matrix->Rotate(rectangle->Angle, center->X, center->Y);
+	matrix2d* mat = matrix->ElementsPointer;
+
 	// insert rotated angle
 	this->coor = new coor_array();
 	this->coor->size = 4;
 	this->coor->arr = new coor2d[4];
 	for (int i = 0; i < 4; i++)
 	{
-		this->coor->arr[i] = LmkImageClrLibUm::Rotate(base_coor[i], rectangle->Angle);
+		//this->coor->arr[i] = LmkImageClrLibUm::Transform(base_coor[i], mat);
+		this->coor->arr[i].x = base_coor[i].x * mat->m11 + base_coor[i].y * mat->m12 + mat->offset1;
+		this->coor->arr[i].y = base_coor[i].x * mat->m21 + base_coor[i].y * mat->m22 + mat->offset2;
 	}
 	// release temporaly data
 	delete base_coor;
