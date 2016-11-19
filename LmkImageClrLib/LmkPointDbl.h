@@ -16,6 +16,13 @@ namespace LmkImageClrLib {
 		/// Constructor
 		/// </summary>
 		LmkPointDbl(double x, double y);
+
+		/// <summary>
+		/// Transformation
+		/// </summary>
+		/// <param name="matrix">affine transform matrix</param>
+		/// <returns>transformed point</returns>
+		LmkPointDbl^ Transform(LmkMatrix^ matrix);
 		/// <summary>
 		/// X (Column)
 		/// </summary>

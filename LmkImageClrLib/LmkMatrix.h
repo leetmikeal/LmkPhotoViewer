@@ -105,7 +105,14 @@ namespace LmkImageClrLib {
 		/// Offset Row (Y axis)
 		/// </summary>
 		property double Offset2 { double get(); }
+		/// <summary>
+		/// Identity matrix
+		/// </summary>
 		property LmkMatrix^ Identity { LmkMatrix^ get(); }
+		/// <summary>
+		/// Elements pointer
+		/// </summary>
+		property matrix2d* ElementsPointer { matrix2d* get(); }
 	private:
 		matrix2d* elements;
 	};

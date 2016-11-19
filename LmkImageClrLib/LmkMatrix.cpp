@@ -7,16 +7,14 @@ using namespace LmkImageClrLibUm;
 /// <summary>
 /// Constructor
 /// </summary>
-LmkMatrix::LmkMatrix()
-{
+LmkMatrix::LmkMatrix() {
 	this->elements = new matrix2d();
 }
 
 /// <summary>
 /// Desctructor
 /// </summary>
-LmkMatrix::~LmkMatrix()
-{
+LmkMatrix::~LmkMatrix() {
 	// release managed resource
 	delete elements;
 
@@ -26,15 +24,13 @@ LmkMatrix::~LmkMatrix()
 /// <summary>
 /// Finalizer
 /// </summary>
-LmkMatrix::!LmkMatrix()
-{
+LmkMatrix::!LmkMatrix() {
 	// release unmanaged resource
 }
 /// <summary>
 /// Initialize elements
 /// </summary>
-LmkMatrix::LmkMatrix(double m11, double m12, double m21, double m22, double offset1, double offset2)
-{
+LmkMatrix::LmkMatrix(double m11, double m12, double m21, double m22, double offset1, double offset2) {
 	this->elements = new matrix2d();
 	this->elements->m11 = m11;
 	this->elements->m12 = m12;
@@ -44,8 +40,7 @@ LmkMatrix::LmkMatrix(double m11, double m12, double m21, double m22, double offs
 	this->elements->offset2 = offset2;
 }
 
-LmkMatrix^ LmkMatrix::Translate(double x, double y)
-{
+LmkMatrix^ LmkMatrix::Translate(double x, double y) {
 	return gcnew LmkMatrix(
 		this->elements->m11 + x,
 		this->elements->m12 + x,
@@ -55,8 +50,7 @@ LmkMatrix^ LmkMatrix::Translate(double x, double y)
 		this->elements->offset2 + y
 	);
 }
-LmkMatrix^ LmkMatrix::TranslatePre(double x, double y)
-{
+LmkMatrix^ LmkMatrix::TranslatePre(double x, double y) {
 	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
 		e->m11,
@@ -67,8 +61,7 @@ LmkMatrix^ LmkMatrix::TranslatePre(double x, double y)
 		e->m21 * x + e->m22 * y + e->offset2
 	);
 }
-LmkMatrix^ LmkMatrix::Scale(double column, double row)
-{
+LmkMatrix^ LmkMatrix::Scale(double column, double row) {
 	return gcnew LmkMatrix(
 		this->elements->m11 * column,
 		this->elements->m12 * column,
@@ -78,8 +71,7 @@ LmkMatrix^ LmkMatrix::Scale(double column, double row)
 		this->elements->offset2 * row
 	);
 }
-LmkMatrix^ LmkMatrix::ScalePre(double column, double row)
-{
+LmkMatrix^ LmkMatrix::ScalePre(double column, double row) {
 	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
 		e->m11 * column,
@@ -90,8 +82,7 @@ LmkMatrix^ LmkMatrix::ScalePre(double column, double row)
 		e->offset2
 	);
 }
-LmkMatrix^ LmkMatrix::Rotate(double a)
-{
+LmkMatrix^ LmkMatrix::Rotate(double a) {
 	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
 		e->m11 * cos(a) - e->m21 * sin(a),
@@ -102,8 +93,7 @@ LmkMatrix^ LmkMatrix::Rotate(double a)
 		e->offset1 * sin(a) + e->offset2 * cos(a)
 	);
 }
-LmkMatrix^ LmkMatrix::RotatePre(double a)
-{
+LmkMatrix^ LmkMatrix::RotatePre(double a) {
 	matrix2d* e = this->elements;
 	return gcnew LmkMatrix(
 		e->m11 * cos(a) + e->m12 * sin(a),
@@ -115,33 +105,27 @@ LmkMatrix^ LmkMatrix::RotatePre(double a)
 	);
 }
 
-
-double LmkMatrix::M11::get()
-{
+double LmkMatrix::M11::get() {
 	return this->elements->m11;
 }
-double LmkMatrix::M12::get()
-{
+double LmkMatrix::M12::get() {
 	return this->elements->m12;
 }
-double LmkMatrix::M21::get()
-{
+double LmkMatrix::M21::get() {
 	return this->elements->m21;
-
 }
-double LmkMatrix::M22::get()
-{
+double LmkMatrix::M22::get() {
 	return this->elements->m22;
 }
-double LmkMatrix::Offset1::get()
-{
+double LmkMatrix::Offset1::get() {
 	return this->elements->offset1;
 }
-double LmkMatrix::Offset2::get()
-{
+double LmkMatrix::Offset2::get() {
 	return this->elements->offset2;
 }
-LmkMatrix^ LmkMatrix::Identity::get()
-{
+LmkMatrix^ LmkMatrix::Identity::get() {
 	return gcnew LmkMatrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+}
+matrix2d* LmkMatrix::ElementsPointer::get() {
+	return this->elements;
 }

@@ -41,12 +41,29 @@ namespace LmkImageClrLib {
 		/// Finalizer
 		/// </summary>
 		!LmkVector();
+		/// <summary>
+		/// Transformation
+		/// </summary>
+		LmkVector^ Transform(LmkMatrix^ matrix);
 
 		/// <summary>
 		/// Smallest rectangle
 		/// </summary>
 		property LmkRectangleDbl^ SmallestRectangle { LmkRectangleDbl^ get(); }
+		/// <summary>
+		/// 2D coordinate array
+		/// </summary>
+		property array<LmkPointDbl^>^ Points { array<LmkPointDbl^>^ get(); }
+		/// <summary>
+		/// Number of point
+		/// </summary>
+		property int Length { int get(); }
 	private:
+		/// <summary>
+		/// initialize by element pointer
+		/// </summary>
+		/// <param name="coor">pointer of coordinate array</param>
+		LmkVector(coor_array* coor);
 		/// <summary>
 		/// coordinate body
 		/// </summary>

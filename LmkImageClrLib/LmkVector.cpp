@@ -1,14 +1,16 @@
 #include "Stdafx.h"
+#include "StdafxUm.h"
 #include "LmkVector.h"
 #include "LmkRectangleDbl.h"
+#include "LmkPointDbl.h"
+#include "LmkMatrix.h"
 
 using namespace LmkImageClrLib;
 
 /// <summary>
 /// Constructor
 /// </summary>
-LmkVector::LmkVector()
-{
+LmkVector::LmkVector() {
 	this->coor = new coor_array();
 	this->coor->arr = new coor2d[0];
 	this->coor->size = 0;
@@ -16,11 +18,17 @@ LmkVector::LmkVector()
 	// cache
 	this->smallestRectangle = nullptr;
 }
+LmkVector::LmkVector(coor_array* coor) {
+	this->coor = coor;
+
+	// cache
+	this->smallestRectangle = nullptr;
+}
+
 /// <summary>
 /// Copy constructor
 /// </summary>
-LmkVector::LmkVector(LmkVector^ vector)
-{
+LmkVector::LmkVector(LmkVector^ vector) {
 	this->coor = new coor_array();
 	this->coor->arr = new coor2d[vector->coor->size];
 	memcpy(this->coor->arr, vector->coor->arr, sizeof(coor2d) * vector->coor->size);
@@ -32,8 +40,7 @@ LmkVector::LmkVector(LmkVector^ vector)
 /// <summary>
 /// From rectangle
 /// </summary>
-LmkVector::LmkVector(LmkRectangleDbl^ rectangle)
-{
+LmkVector::LmkVector(LmkRectangleDbl^ rectangle) {
 	// create not rotated coordinate
 	coor2d* base_coor = new coor2d[4];
 	base_coor[0].x = rectangle->Column;
@@ -76,11 +83,37 @@ LmkVector::!LmkVector() {
 	// release unmanaged resource
 }
 /// <summary>
+/// Transformation
+/// </summary>
+LmkVector^ LmkVector::Transform(LmkMatrix^ matrix) {
+	matrix2d* e = matrix->ElementsPointer;
+	coor_array* nc = new coor_array(); // new coordinate array
+	coor_array* oc = this->coor; // old coordinate array pointer
+	nc->size = this->coor->size;
+	nc->arr = new coor2d[nc->size];
+	for (int i = 0; i < this->coor->size; i++)
+	{
+		nc->arr[i].x = oc->arr[i].x * e->m11 + oc->arr[i].y * e->m12 + e->offset1;
+		nc->arr[i].y = oc->arr[i].x * e->m21 + oc->arr[i].y * e->m22 + e->offset2;
+	}
+	return gcnew LmkVector(nc);
+}
+array<LmkPointDbl^>^ LmkVector::Points::get() {
+	coor_array* c = this->coor;
+	array<LmkPointDbl^>^ pointArr = gcnew array<LmkPointDbl^>(c->size);
+	for (int i = 0; i < c->size; i++)
+	{
+		pointArr[i] = gcnew LmkPointDbl(c->arr[i].x, c->arr[i].y);
+	}
+	return pointArr;
+}
+
+
+/// <summary>
 /// Get smallest rectangle
 /// </summary>
 /// <returns></returns>
-LmkRectangleDbl^ LmkVector::SmallestRectangle::get()
-{
+LmkRectangleDbl^ LmkVector::SmallestRectangle::get() {
 	// return cache
 	if (this->smallestRectangle != nullptr)
 		return this->smallestRectangle;
@@ -105,4 +138,9 @@ LmkRectangleDbl^ LmkVector::SmallestRectangle::get()
 	// caching
 	this->smallestRectangle = gcnew LmkRectangleDbl(minRow, minCol, maxCol - minCol + 1, maxRow - maxRow + 1);
 	return this->smallestRectangle;
+}
+
+int LmkVector::Length::get()
+{
+	return this->coor->size;
 }
