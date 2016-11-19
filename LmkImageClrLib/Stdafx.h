@@ -21,7 +21,7 @@ namespace LmkImageClrLib {
 	ref class LmkBit;
 	ref class LmkImage;
 	ref class LmkMatrix;
-	ref class LmkPoint2d;
+	value class LmkPoint2d;
 
 	/// <summary>
 	/// Image color type

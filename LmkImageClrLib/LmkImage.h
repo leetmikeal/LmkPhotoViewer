@@ -1,6 +1,9 @@
 #pragma once
 
-#include "stdafx.h"
+#include "Stdafx.h"
+
+#include <stdio.h>
+#include <string.h>
 
 #include "LmkBase.h"
 
@@ -8,17 +11,52 @@ using namespace System;
 
 namespace LmkImageClrLib {
 
-	public value class LmkImageChannel
+	public ref class LmkImageChannel : LmkBase
 	{
 	public:
 		/// <summary>
+		/// Constructor
+		/// </summary>
+		LmkImageChannel();
+		/// <summary>
+		/// Copy constructor
+		/// </summary>
+		LmkImageChannel(LmkImageChannel^ image);
+		/// <summary>
+		/// Destructor
+		/// </summary>
+		~LmkImageChannel();
+		/// <summary>
+		/// Finalizer
+		/// </summary>
+		!LmkImageChannel();
+		/// <summary>
+		/// Copy object
+		/// </summary>
+		/// <returns></returns>
+		LmkImageChannel^ Clone();
+
+		/// <summary>
 		/// color type
 		/// </summary>
-		property ColorType ColorType;
+		property ColorType Color { ColorType get(); }
 		/// <summary>
 		/// byte array
 		/// </summary>
-		property IntPtr Data;
+		property IntPtr Data { IntPtr get(); }
+		/// <summary>
+		/// Image width
+		/// </summary>
+		property int Width { int get(); }
+		/// <summary>
+		/// Image height
+		/// </summary>
+		property int Height { int get(); }
+	private:
+		ColorType color;
+		byte* data;
+		int width;
+		int height;
 	};
 
 	/// <summary>
@@ -34,41 +72,42 @@ namespace LmkImageClrLib {
 		/// </summary>
 		LmkImage();
 		/// <summary>
+		/// Copy constructor
+		/// </summary>
+		LmkImage(LmkImage^ image);
+		/// <summary>
 		/// Destructor
 		/// </summary>
-		~LmkImage() {
-			// release managed resource
-			for each (LmkImageChannel var in Channel)
-			{
-				byte* d = (byte*)(void*)var.Data;
-				delete d;
-			}
-
-			this->!LmkImage();
-		}
+		~LmkImage();
 		/// <summary>
 		/// Finalizer
 		/// </summary>
-		!LmkImage() {
-			// release unmanaged resource
-		}
-
+		!LmkImage();
+		/// <summary>
+		/// Copy object
+		/// </summary>
+		LmkImage^ Clone();
 		/// <summary>
 		/// Image width
 		/// </summary>
-		property int Width;
+		property int Width { int get(); }
 		/// <summary>
 		/// Image height
 		/// </summary>
-		property int Height;
+		property int Height { int get(); }
 		/// <summary>
 		/// Image height
 		/// </summary>
-		property array<LmkImageChannel>^ Channel;
+		property array<LmkImageChannel^>^ Channel { array<LmkImageChannel^>^ get(); }
 		/// <summary>
 		/// Tags
 		/// </summary>
-		property String^ Tags;
+		property String^ Tags { String^ get(); }
+	private:
+		int width;
+		int height;
+		array<LmkImageChannel^>^ channel;
+		String^ tags;
 
 	};
 }
