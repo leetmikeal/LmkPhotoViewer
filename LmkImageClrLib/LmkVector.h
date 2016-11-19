@@ -4,6 +4,7 @@
 #include "StdafxUm.h"
 
 #include <stdio.h>
+#include <limits>
 
 #include "LmkBase.h"
 #include "LmkRectangle.h"
@@ -33,10 +34,19 @@ namespace LmkImageClrLib {
 		/// </summary>
 		!LmkVector();
 
+		/// <summary>
+		/// Smallest rectangle
+		/// </summary>
 		property LmkRectangle^ SmallestRectangle { LmkRectangle^ get(); }
-		//property LmkImageClrLib::LmkRectangle^ SmallestRectangle;
 	private:
+		/// <summary>
+		/// coordinate body
+		/// </summary>
 		coor_array* coor;
+		/// <summary>
+		/// Smallest rectangle cache
+		/// </summary>
+		LmkRectangle^ smallestRectangle;
 	};
 
 }

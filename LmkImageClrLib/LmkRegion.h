@@ -3,6 +3,8 @@
 #include "Stdafx.h"
 #include "StdafxUm.h"
 
+#include <limits>
+
 #include "LmkBase.h"
 #include "LmkRectangle.h"
 
@@ -24,6 +26,10 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Constructor
 		/// </summary>
+		LmkRegion(LmkRectangle^ rectangle);
+		/// <summary>
+		/// from rectangle coordinate
+		/// </summary>
 		LmkRegion(int row, int column, int width, int height);
 		/// <summary>
 		/// Destructor
@@ -34,9 +40,27 @@ namespace LmkImageClrLib {
 		/// </summary>
 		!LmkRegion();
 
+		/// <summary>
+		/// Smallest Rectangle
+		/// </summary>
 		property LmkRectangle^ SmallestRectangle { LmkRectangle^ get(); }
+		/// <summary>
+		/// Region area size
+		/// </summary>
+		property int AreaSize { int get(); }
 	private:
-		property run_length* rl;
+		/// <summary>
+		/// Pointer of run length
+		/// </summary>
+		run_length* rl;
+		/// <summary>
+		/// Region area size cache
+		/// </summary>
+		int areaSize;
+		/// <summary>
+		/// Smallest rectangle cache
+		/// </summary>
+		LmkRectangle^ smallestRectangle;
 	};
 
 }
