@@ -7,7 +7,7 @@
 #include <limits>
 
 #include "LmkBase.h"
-#include "LmkRectangle.h"
+#include "LmkRectangleDbl.h"
 
 using namespace System;
 using namespace LmkImageClrLibUm;
@@ -32,7 +32,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// From rectangle
 		/// </summary>
-		LmkVector(LmkRectangle^ rectangle);
+		LmkVector(LmkRectangleDbl^ rectangle);
 		/// <summary>
 		/// Destructor
 		/// </summary>
@@ -45,7 +45,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Smallest rectangle
 		/// </summary>
-		property LmkRectangle^ SmallestRectangle { LmkRectangle^ get(); }
+		property LmkRectangleDbl^ SmallestRectangle { LmkRectangleDbl^ get(); }
 	private:
 		/// <summary>
 		/// coordinate body
@@ -54,7 +54,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Smallest rectangle cache
 		/// </summary>
-		LmkRectangle^ smallestRectangle;
+		LmkRectangleDbl^ smallestRectangle;
 	};
 
 }

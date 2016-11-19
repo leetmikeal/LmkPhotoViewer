@@ -10,27 +10,27 @@ namespace LmkImageClrLib {
 	/// <summary>
 	/// Rectangle
 	/// </summary>
-	public ref class LmkRectangle : LmkBase
+	public ref class LmkRectangleDbl : LmkBase
 	{
 	public:
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		LmkRectangle();
+		LmkRectangleDbl();
 		/// <summary>
 		/// Copy constructor
 		/// </summary>
-		LmkRectangle(LmkRectangle^ rectangle);
+		LmkRectangleDbl(LmkRectangleDbl^ rectangle);
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		LmkRectangle(double row, double column, double width, double height);
+		LmkRectangleDbl(double row, double column, double width, double height);
 
 		/// <summary>
 		/// Copy object
 		/// </summary>
 		/// <returns>copied object</returns>
-		LmkRectangle^ Clone();
+		LmkRectangleDbl^ Clone();
 
 		/// <summary>
 		/// Row
@@ -55,7 +55,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Smallest rectangle. disabled rotation.
 		/// </summary>
-		property LmkRectangle^ SmallestRectangle { LmkRectangle^ get(); }
+		property LmkRectangleDbl^ SmallestRectangle { LmkRectangleDbl^ get(); }
 	private:
 		double row;
 		double column;

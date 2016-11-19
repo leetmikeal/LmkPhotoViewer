@@ -1,6 +1,6 @@
 #include "Stdafx.h"
 #include "LmkVector.h"
-#include "LmkRectangle.h"
+#include "LmkRectangleDbl.h"
 
 using namespace LmkImageClrLib;
 
@@ -32,7 +32,7 @@ LmkVector::LmkVector(LmkVector^ vector)
 /// <summary>
 /// From rectangle
 /// </summary>
-LmkVector::LmkVector(LmkRectangle^ rectangle)
+LmkVector::LmkVector(LmkRectangleDbl^ rectangle)
 {
 	// create not rotated coordinate
 	coor2d* base_coor = new coor2d[4];
@@ -79,7 +79,7 @@ LmkVector::!LmkVector() {
 /// Get smallest rectangle
 /// </summary>
 /// <returns></returns>
-LmkRectangle^ LmkVector::SmallestRectangle::get()
+LmkRectangleDbl^ LmkVector::SmallestRectangle::get()
 {
 	// return cache
 	if (this->smallestRectangle != nullptr)
@@ -103,6 +103,6 @@ LmkRectangle^ LmkVector::SmallestRectangle::get()
 	}
 
 	// caching
-	this->smallestRectangle = gcnew LmkRectangle(minRow, minCol, maxCol - minCol + 1, maxRow - maxRow + 1);
+	this->smallestRectangle = gcnew LmkRectangleDbl(minRow, minCol, maxCol - minCol + 1, maxRow - maxRow + 1);
 	return this->smallestRectangle;
 }

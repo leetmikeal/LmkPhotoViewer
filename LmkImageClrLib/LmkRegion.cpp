@@ -1,7 +1,7 @@
 #include "Stdafx.h"
 #include "StdafxUm.h"
 #include "LmkRegion.h"
-#include "LmkRectangle.h"
+#include "LmkRectangleDbl.h"
 
 using namespace System;
 using namespace LmkImageClrLib;
@@ -31,7 +31,7 @@ LmkRegion::!LmkRegion()
 	// release unmanaged resource
 }
 
-LmkRegion::LmkRegion(LmkRectangle^ rectangle)
+LmkRegion::LmkRegion(LmkRectangleDbl^ rectangle)
 {
 	this->rl = new run_length();
 	this->rl->size = (int)rectangle->Height;
@@ -64,10 +64,10 @@ LmkRegion::LmkRegion(int row, int column, int width, int height)
 
 	// create cache
 	this->areaSize = width * height;
-	this->smallestRectangle = gcnew LmkRectangle(row, column, width, height);
+	this->smallestRectangle = gcnew LmkRectangleDbl(row, column, width, height);
 }
 
-LmkRectangle^ LmkRegion::SmallestRectangle::get()
+LmkRectangleDbl^ LmkRegion::SmallestRectangle::get()
 {
 	// return cache
 	if (this->smallestRectangle != nullptr)
@@ -91,7 +91,7 @@ LmkRectangle^ LmkRegion::SmallestRectangle::get()
 	}
 
 	// caching
-	this->smallestRectangle = gcnew LmkRectangle(minRow, minCol, maxCol - minCol + 1, maxRow - maxRow + 1);
+	this->smallestRectangle = gcnew LmkRectangleDbl(minRow, minCol, maxCol - minCol + 1, maxRow - maxRow + 1);
 	return this->smallestRectangle;
 }
 

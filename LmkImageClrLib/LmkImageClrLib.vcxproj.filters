@@ -36,12 +36,6 @@
     <ClInclude Include="LmkVector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LmkRectangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LmkPoint2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LmkBit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,6 +43,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StdafxUm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LmkRectangleDbl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LmkPointDbl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,12 +74,6 @@
     <ClCompile Include="LmkVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LmkRectangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LmkPoint2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LmkBit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -87,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdafxUm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LmkRectangleDbl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LmkPointDbl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

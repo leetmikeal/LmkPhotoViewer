@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "LmkRectangle.h"
+#include "LmkRectangleDbl.h"
 #include "LmkRegion.h"
 #include "LmkVector.h"
 
 using namespace LmkImageClrLib;
 
-LmkRectangle::LmkRectangle()
+LmkRectangleDbl::LmkRectangleDbl()
 {
 }
 
@@ -13,7 +13,7 @@ LmkRectangle::LmkRectangle()
 /// Copy constructor
 /// </summary>
 /// <param name="rectangle"></param>
-LmkRectangle::LmkRectangle(LmkRectangle^ rectangle)
+LmkRectangleDbl::LmkRectangleDbl(LmkRectangleDbl^ rectangle)
 {
 	this->row    = rectangle->Row;
 	this->column = rectangle->Column;
@@ -22,7 +22,7 @@ LmkRectangle::LmkRectangle(LmkRectangle^ rectangle)
 	this->angle  = rectangle->Angle;
 }
 
-LmkRectangle::LmkRectangle(double row, double column, double width, double height)
+LmkRectangleDbl::LmkRectangleDbl(double row, double column, double width, double height)
 {
 	this->row = row;
 	this->column = column;
@@ -31,32 +31,32 @@ LmkRectangle::LmkRectangle(double row, double column, double width, double heigh
 	this->angle = 0;
 }
 
-LmkRectangle^ LmkRectangle::Clone()
+LmkRectangleDbl^ LmkRectangleDbl::Clone()
 {
-	return gcnew LmkRectangle(this);
+	return gcnew LmkRectangleDbl(this);
 }
 
-double LmkRectangle::LmkRectangle::Row::get()
+double LmkRectangleDbl::LmkRectangleDbl::Row::get()
 {
 	return this->row;
 }
-double LmkRectangle::LmkRectangle::Column::get()
+double LmkRectangleDbl::LmkRectangleDbl::Column::get()
 {
 	return this->column;
 }
-double LmkRectangle::LmkRectangle::Width::get()
+double LmkRectangleDbl::LmkRectangleDbl::Width::get()
 {
 	return this->width;
 }
-double LmkRectangle::LmkRectangle::Height::get()
+double LmkRectangleDbl::LmkRectangleDbl::Height::get()
 {
 	return this->height;
 }
-double LmkRectangle::LmkRectangle::Angle::get()
+double LmkRectangleDbl::LmkRectangleDbl::Angle::get()
 {
 	return this->angle;
 }
-LmkRectangle^ LmkRectangle::LmkRectangle::SmallestRectangle::get()
+LmkRectangleDbl^ LmkRectangleDbl::LmkRectangleDbl::SmallestRectangle::get()
 {
 	LmkVector^ vector = gcnew LmkVector(this);
 	return vector->SmallestRectangle;

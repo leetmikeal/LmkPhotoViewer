@@ -13,7 +13,5 @@ namespace LmkImageLib
     [DataContract(Name = "")]
     public class LmkPoint2d
     {
-        private LmkImageClrLib.LmkPoint2d body;
-
     }
 }
