@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 namespace LmkImageClrLibUm {
 
 	/// <summary>
@@ -38,6 +40,12 @@ namespace LmkImageClrLibUm {
 		int size;
 		coor2d* arr;
 	} coor_array;
-
+	/// <summary>
+	/// Rotation of 2d coordinate 
+	/// </summary>
+	/// <param name="coor">original 2d coordinate</param>
+	/// <param name="angle">counter-clockwise radian angle</param>
+	/// <returns>rotated coordinate</returns>
+	coor2d Rotate(coor2d coor, double angle);
 }
 

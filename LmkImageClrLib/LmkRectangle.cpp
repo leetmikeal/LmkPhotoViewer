@@ -9,6 +9,10 @@ LmkRectangle::LmkRectangle()
 {
 }
 
+/// <summary>
+/// Copy constructor
+/// </summary>
+/// <param name="rectangle"></param>
 LmkRectangle::LmkRectangle(LmkRectangle^ rectangle)
 {
 	this->row    = rectangle->Row;
@@ -52,3 +56,10 @@ double LmkRectangle::LmkRectangle::Angle::get()
 {
 	return this->angle;
 }
+LmkRectangle^ LmkRectangle::LmkRectangle::SmallestRectangle::get()
+{
+	LmkVector^ vector = gcnew LmkVector(this);
+	return vector->SmallestRectangle;
+}
+
+// -------------------------------------------------------------------------

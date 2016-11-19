@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Stdafx.h"
+#include "StdafxUm.h"
 
 #include "LmkBase.h"
 
@@ -17,7 +18,7 @@ namespace LmkImageClrLib {
 		/// </summary>
 		LmkRectangle();
 		/// <summary>
-		/// Constructor
+		/// Copy constructor
 		/// </summary>
 		LmkRectangle(LmkRectangle^ rectangle);
 		/// <summary>
@@ -51,6 +52,10 @@ namespace LmkImageClrLib {
 		/// Angle (unclock-wise, radian)
 		/// </summary>
 		property double Angle { double get(); }
+		/// <summary>
+		/// Smallest rectangle. disabled rotation.
+		/// </summary>
+		property LmkRectangle^ SmallestRectangle { LmkRectangle^ get(); }
 	private:
 		double row;
 		double column;

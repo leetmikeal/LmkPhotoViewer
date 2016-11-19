@@ -26,6 +26,14 @@ namespace LmkImageClrLib {
 		/// </summary>
 		LmkVector();
 		/// <summary>
+		/// Copy constructor
+		/// </summary>
+		LmkVector(LmkVector^ vector);
+		/// <summary>
+		/// From rectangle
+		/// </summary>
+		LmkVector(LmkRectangle^ rectangle);
+		/// <summary>
 		/// Destructor
 		/// </summary>
 		~LmkVector();
