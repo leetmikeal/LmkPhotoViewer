@@ -81,6 +81,10 @@ namespace LmkImageClrLib {
 		/// </summary>
 		LmkImage(LmkImage^ image);
 		/// <summary>
+		/// load from image file
+		/// </summary>
+		LmkImage(String^ filePath);
+		/// <summary>
 		/// Destructor
 		/// </summary>
 		~LmkImage();

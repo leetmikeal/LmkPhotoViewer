@@ -72,6 +72,9 @@ int LmkImageChannel::Height::get() {
 }
 
 
+/// <summary>
+/// Constructor
+/// </summary>
 LmkImage::LmkImage() {
 	this->width = 0;
 	this->height = 0;
@@ -92,6 +95,15 @@ LmkImage::LmkImage(LmkImage^ image)
 		this->channel[i] = image->channel[i]->Clone();
 	}
 	this->tags = image->tags;
+}
+/// <summary>
+/// Load from image file
+/// </summary>
+LmkImage::LmkImage(String^ filePath) {
+	this->width = 0;
+	this->height = 0;
+	this->channel = gcnew array<LmkImageChannel^>{};
+	this->tags = nullptr;
 }
 /// <summary>
 /// Destructor

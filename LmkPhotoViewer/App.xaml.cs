@@ -28,6 +28,24 @@ namespace LmkPhotoViewer
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            try
+            {
+                if (e.Args != null && e.Args.Length > 0)
+                {
+                    AppConfig.Instance.Start = new AppStartOption(e.Args);
+                }
+            }
+            catch(CommandArgumentException)
+            {
+                MessageBox.Show(
+                    string.Format("args error: {0}", string.Join(" ", e.Args)),
+                    "Argument Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                    );
+            }
+
+
             base.OnStartup(e);
         }
 

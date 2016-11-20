@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using GalaSoft.MvvmLight;
+using LmkImageClrLib;
 
 namespace LmkPhotoViewer.ViewModel
 {
@@ -19,6 +20,36 @@ namespace LmkPhotoViewer.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+
+            // load initial image
+            if(System.IO.File.Exists(AppConfig.Instance.Start.FilePath))
+            {
+                this.Image = new LmkImage(AppConfig.Instance.Start.FilePath);
+            }
+        }
+
+        private LmkImage image;
+
+        public LmkImage Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+                RaisePropertyChanged(() => Image);
+                RaisePropertyChanged(() => ImageSource);
+            }
+        }
+
+        public System.Windows.Media.ImageSource ImageSource
+        {
+            get
+            {
+                return null;
+            }
         }
     }
 }
