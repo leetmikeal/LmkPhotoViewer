@@ -15,11 +15,17 @@
 #include "LmkRectangleInt.h"
 #include "LmkRectangleDbl.h"
 
-public ref class LmkOperatorSet
-{
-public:
-	//LmkOperatorSet();
-	static LmkRegion^ Threshold(LmkImage^ image, byte minVal, byte maxVal);
-	static LmkRegion^ ThresholdMulti(LmkImage^ image, byte minVal, byte maxVal);
-};
+namespace LmkImageClrLib {
+	/// <summary>
+	/// Common operator set class
+	/// </summary>
+	public ref class LmkOperatorSet
+	{
+	public:
+		//LmkOperatorSet();
+		static LmkRegion^ Threshold(LmkImage^ image, byte minVal, byte maxVal);
+		static array<LmkRegion^>^ ThresholdMulti(LmkImage^ image, byte minVal, byte maxVal);
+		static LmkImage^ ConvertColor(LmkImage^ image, ConvertColorType colorType);
+	};
+}
 

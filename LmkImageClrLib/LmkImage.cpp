@@ -38,30 +38,34 @@ LmkImageChannel::!LmkImageChannel() {
 	// release unmanaged resource
 }
 
-LmkImageChannel^ LmkImageChannel::Clone()
-{
+LmkImageChannel^ LmkImageChannel::Clone() {
 	return gcnew LmkImageChannel(this);
 }
-ColorType LmkImageChannel::Color::get()
+
+
+LmkImageChannel::LmkImageChannel(byte* data, int width, int height, ColorType colorType)
 {
+	this->data = data;
+	this->width = width;
+	this->height = height;
+	this->color = colorType;
+}
+
+ColorType LmkImageChannel::Color::get() {
 	return this->color;
 }
-IntPtr LmkImageChannel::Data::get()
-{
+IntPtr LmkImageChannel::Data::get() {
 	return (IntPtr)this->data;
 }
-int LmkImageChannel::Width::get()
-{
+int LmkImageChannel::Width::get() {
 	return this->width;
 }
-int LmkImageChannel::Height::get()
-{
+int LmkImageChannel::Height::get() {
 	return this->height;
 }
 
 
-LmkImage::LmkImage()
-{
+LmkImage::LmkImage() {
 	this->width = 0;
 	this->height = 0;
 	this->channel = gcnew array<LmkImageChannel^>{};
@@ -82,6 +86,8 @@ LmkImage::LmkImage(LmkImage^ image)
 	}
 	this->tags = image->tags;
 }
+/// <summary>
+/// Destructor
 /// </summary>
 LmkImage::~LmkImage() {
 	// release managed resource
@@ -100,20 +106,57 @@ LmkImage::!LmkImage() {
 LmkImage^ LmkImage::Clone() {
 	return gcnew LmkImage(this);
 }
-array<LmkImageChannel^>^ LmkImage::Channel::get()
+bool LmkImage::ContainChannel(ColorType colorType) {
+	for (int i = 0; i < this->Channel->Length; i++) {
+		if (this->Channel[i]->Color == colorType)
+			return true;
+	}
+	return false;
+}
+LmkImage^ LmkImage::ExtractChannel(ColorType colorType) {
+	LmkImageChannel^ channel = nullptr;
+	for (int i = 0; i < this->Channel->Length; i++) {
+		if (this->Channel[i]->Color == colorType)
+		{
+			channel = this->Channel[i];
+			break;
+		}
+	}
+	if (channel == nullptr)
+		return nullptr;
+	else
+		return gcnew LmkImage(gcnew array<LmkImageChannel^> { channel });
+}
+
+/// <summary>
+/// From channel object
+/// </summary>
+/// <param name="image">copied image</param>
+LmkImage::LmkImage(array<LmkImageChannel^>^ channel)
 {
+	if (channel == nullptr)
+		throw gcnew System::ArgumentNullException();
+	else if (channel->Length == 0)
+		throw gcnew System::ArgumentException();
+
+	// get first channel
+	LmkImageChannel^ first = channel[0];
+
+	this->width = first->Width;
+	this->height = first->Height;
+	this->channel = channel;
+	this->tags = "";
+}
+array<LmkImageChannel^>^ LmkImage::Channel::get() {
 	return this->channel;
 }
-int LmkImage::Width::get()
-{
+int LmkImage::Width::get() {
 	return this->width;
 }
-int LmkImage::Height::get()
-{
+int LmkImage::Height::get() {
 	return this->height;
 }
-String^ LmkImage::Tags::get()
-{
+String^ LmkImage::Tags::get() {
 	return this->tags;
 }
 

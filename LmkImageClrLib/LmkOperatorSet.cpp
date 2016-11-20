@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LmkOperatorSet.h"
+#include "LmkOperatorSetUm.h"
 
 using namespace System;
 using namespace LmkImageClrLib;
@@ -98,9 +99,35 @@ LmkRegion^ LmkOperatorSet::Threshold(LmkImage^ image, byte minVal, byte maxVal)
 	return gcnew LmkRegion(rl);
 }
 
-LmkRegion^ LmkOperatorSet::ThresholdMulti(LmkImage^ image, byte minVal, byte maxVal)
+array<LmkRegion^>^ LmkOperatorSet::ThresholdMulti(LmkImage^ image, byte minVal, byte maxVal)
 {
 	throw gcnew NotImplementedException();
+}
+
+LmkImage^ LmkOperatorSet::ConvertColor(LmkImage^ image, ConvertColorType colorType)
+{
+	// check
+	if (!image->ContainChannel(ColorType::Red)
+		|| !image->ContainChannel(ColorType::Green)
+		|| !image->ContainChannel(ColorType::Blue))
+		throw gcnew System::ArgumentException();
+
+	switch (colorType)
+	{
+	case LmkImageClrLib::ConvertColorType::RgbToGray:
+	{
+		byte* red_data = image->ExtractChannel(ColorType::Red)->Channel[0]->data;
+		byte* green_data = image->ExtractChannel(ColorType::Green)->Channel[0]->data;
+		byte* blue_data = image->ExtractChannel(ColorType::Blue)->Channel[0]->data;
+		byte* new_array = LmkOperatorSetUm::RgbToGray(red_data, green_data, blue_data, image->Width, image->Height);
+		LmkImageChannel^ channel = gcnew LmkImageChannel(new_array, image->Width, image->Height, ColorType::Brightness);
+		return gcnew LmkImage(gcnew array<LmkImageChannel^> { channel });
+		break;
+	}
+	default:
+		throw gcnew System::NotSupportedException();
+		break;
+	}
 }
 
 

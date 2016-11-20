@@ -21,7 +21,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Copy constructor
 		/// </summary>
-		LmkImageChannel(LmkImageChannel^ image);
+		LmkImageChannel(LmkImageChannel^ channel);
 		/// <summary>
 		/// Destructor
 		/// </summary>
@@ -53,6 +53,10 @@ namespace LmkImageClrLib {
 		/// </summary>
 		property int Height { int get(); }
 	internal:
+		/// <summary>
+		/// From byte array
+		/// </summary>
+		LmkImageChannel(byte* data, int width, int height, ColorType colorType);
 		ColorType color;
 		byte* data;
 		int width;
@@ -88,6 +92,15 @@ namespace LmkImageClrLib {
 		/// </summary>
 		LmkImage^ Clone();
 		/// <summary>
+		/// Check contained color channel
+		/// </summary>
+		bool ContainChannel(ColorType colorType);
+		/// <summary>
+		/// Extract single channel image
+		/// </summary>
+		LmkImage^ ExtractChannel(ColorType colorType);
+
+		/// <summary>
 		/// Image width
 		/// </summary>
 		property int Width { int get(); }
@@ -104,6 +117,10 @@ namespace LmkImageClrLib {
 		/// </summary>
 		property String^ Tags { String^ get(); }
 	internal:
+		/// <summary>
+		/// From channel object
+		/// </summary>
+		LmkImage(array<LmkImageChannel^>^ image);
 		int width;
 		int height;
 		array<LmkImageChannel^>^ channel;

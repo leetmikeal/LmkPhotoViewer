@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+typedef unsigned char byte;
+
 namespace LmkImageClrLibUm {
 
 	/// <summary>

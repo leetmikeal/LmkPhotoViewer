@@ -4,14 +4,13 @@
 
 #pragma once
 
+#include "StdafxUm.h"
 //#include <cstdio>
 //#include <cstring>
 
 //using namespace System;
 //using namespace LmkImageClrLib;
 //using namespace LmkImageClrLibUm;
-
-typedef unsigned char byte;
 
 namespace LmkImageClrLib {
 
@@ -30,11 +29,20 @@ namespace LmkImageClrLib {
 	/// </summary>
 	public enum class ColorType : int
 	{
+		None,
 		Red,
 		Green,
 		Blue,
 		Hue,
 		Saturation,
 		Brightness,
+	};
+
+	/// <summary>
+	/// Image color converting type
+	/// </summary>
+	public enum class ConvertColorType : int
+	{
+		RgbToGray,
 	};
 }
