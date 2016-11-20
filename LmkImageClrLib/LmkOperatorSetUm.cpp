@@ -4,7 +4,7 @@
 
 using namespace LmkImageClrLibUm;
 
-byte* LmkOperatorSetUm::RgbToGray(byte* red, byte* green, byte* blue, int width, int height)
+byte* LmkImageClrLibUm::RgbToGray(byte* red, byte* green, byte* blue, int width, int height)
 {
 	int size = width * height;
 	byte* new_array = new byte[size];

@@ -68,6 +68,7 @@ namespace LmkImageClrLib {
 	/// 
 	/// 8-bit multi channel
 	/// </summary>
+	[System::Runtime::Serialization::DataContract(Namespace = "")]
 	public ref class LmkImage : LmkBase
 	{
 	public:
@@ -116,6 +117,11 @@ namespace LmkImageClrLib {
 		/// Tags
 		/// </summary>
 		property String^ Tags { String^ get(); }
+		/// <summary>
+		/// Image height
+		/// </summary>
+		[System::Runtime::Serialization::DataMember(Name = "D")]
+		property array<Byte>^ D { array<Byte>^ get(); void set(array<Byte>^ value); }
 	internal:
 		/// <summary>
 		/// From channel object

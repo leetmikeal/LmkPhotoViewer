@@ -24,6 +24,9 @@ namespace LmkImageClrLib {
 	value class LmkPointInt;
 	value class LmkPointDbl;
 
+	ref class LmkOperatorSet;
+	class LmkOperatorSetUm;
+
 	/// <summary>
 	/// Image color type
 	/// </summary>

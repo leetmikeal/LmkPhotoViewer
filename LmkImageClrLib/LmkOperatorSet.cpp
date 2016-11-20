@@ -119,7 +119,7 @@ LmkImage^ LmkOperatorSet::ConvertColor(LmkImage^ image, ConvertColorType colorTy
 		byte* red_data = image->ExtractChannel(ColorType::Red)->Channel[0]->data;
 		byte* green_data = image->ExtractChannel(ColorType::Green)->Channel[0]->data;
 		byte* blue_data = image->ExtractChannel(ColorType::Blue)->Channel[0]->data;
-		byte* new_array = LmkOperatorSetUm::RgbToGray(red_data, green_data, blue_data, image->Width, image->Height);
+		byte* new_array = LmkImageClrLibUm::RgbToGray(red_data, green_data, blue_data, image->Width, image->Height);
 		LmkImageChannel^ channel = gcnew LmkImageChannel(new_array, image->Width, image->Height, ColorType::Brightness);
 		return gcnew LmkImage(gcnew array<LmkImageChannel^> { channel });
 		break;
@@ -128,6 +128,62 @@ LmkImage^ LmkOperatorSet::ConvertColor(LmkImage^ image, ConvertColorType colorTy
 		throw gcnew System::NotSupportedException();
 		break;
 	}
+}
+
+array<Byte>^ LmkOperatorSet::Compress(array<Byte>^ raw) {
+	if (raw->Length == 0)
+		return gcnew array<Byte> { };
+
+	System::IO::MemoryStream^ memory = gcnew System::IO::MemoryStream();
+	try {
+		System::IO::Compression::GZipStream^ gzip = gcnew System::IO::Compression::GZipStream(
+			memory,
+			System::IO::Compression::CompressionLevel::Fastest,
+			true
+		);
+		try {
+			gzip->Write(raw, 0, raw->Length);
+			return memory->ToArray();
+		}
+		__finally {
+			gzip->Close();
+		}
+	}
+	__finally {
+		memory->Close();
+	}
+}
+
+array<Byte>^ LmkOperatorSet::Decompress(array<Byte>^ compressed) {
+	if (compressed->Length == 0)
+		return gcnew array<Byte>(0);
+
+	System::IO::Compression::GZipStream^ stream = gcnew System::IO::Compression::GZipStream(
+		gcnew System::IO::MemoryStream(compressed), 
+		System::IO::Compression::CompressionMode::Decompress
+	);
+	try {
+		const int size = 65536;
+		array<Byte>^ buffer = gcnew array<Byte>(size);
+		System::IO::MemoryStream^ memory = gcnew System::IO::MemoryStream();
+		try
+		{
+			int count = 0;
+			do {
+				count = stream->Read(buffer, 0, size);
+				if (count > 0)
+					memory->Write(buffer, 0, count);
+			} while (count < 0);
+			return memory->ToArray();
+		}
+		__finally {
+			memory->Close();
+		}
+	}
+	__finally {
+		stream->Close();
+	}
+
 }
 
 
