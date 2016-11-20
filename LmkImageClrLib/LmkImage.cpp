@@ -6,17 +6,20 @@ using namespace LmkImageClrLib;
 /// <summary>
 /// Constructor
 /// </summary>
-LmkImageChannel::LmkImageChannel()
-{
+LmkImageChannel::LmkImageChannel() {
+	this->data = new byte[0];
+	this->width = 0;
+	this->height = 0;
+	this->color = ColorType::None;
 }
 /// <summary>
 /// Copy constructor
 /// </summary>
-LmkImageChannel::LmkImageChannel(LmkImageChannel^ channel)
-{
+LmkImageChannel::LmkImageChannel(LmkImageChannel^ channel) {
 	int size = channel->Width * channel->Height;
 	byte* newData = new byte[size];
 	memcpy(newData, channel->data, sizeof(byte) * size);
+	this->data = newData;
 
 	this->width = channel->width;
 	this->height = channel->height;

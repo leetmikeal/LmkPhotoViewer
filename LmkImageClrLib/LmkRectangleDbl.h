@@ -24,7 +24,7 @@ namespace LmkImageClrLib {
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		LmkRectangleDbl(double row, double column, double width, double height);
+		LmkRectangleDbl(double column, double row, double width, double height);
 
 		/// <summary>
 		/// Copy object
@@ -33,13 +33,13 @@ namespace LmkImageClrLib {
 		LmkRectangleDbl^ Clone();
 
 		/// <summary>
-		/// Row
-		/// </summary>
-		property double Row { double get(); }
-		/// <summary>
 		/// Column
 		/// </summary>
 		property double Column { double get(); }
+		/// <summary>
+		/// Row
+		/// </summary>
+		property double Row { double get(); }
 		/// <summary>
 		/// Width
 		/// </summary>
@@ -61,8 +61,8 @@ namespace LmkImageClrLib {
 		/// </summary>
 		property LmkPointDbl^ Center { LmkPointDbl^ get(); }
 	private:
-		double row;
 		double column;
+		double row;
 		double width;
 		double height;
 		double angle;

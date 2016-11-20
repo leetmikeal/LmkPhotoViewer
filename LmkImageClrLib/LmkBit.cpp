@@ -6,16 +6,14 @@ using namespace LmkImageClrLib;
 /// <summary>
 /// Constructor
 /// </summary>
-LmkBit::LmkBit()
-{
+LmkBit::LmkBit() {
 	this->data = new byte[0];
 }
 
 /// <summary>
 /// Destructor
 /// </summary>
-LmkBit::~LmkBit()
-{
+LmkBit::~LmkBit() {
 	// release managed resource
 	delete this->data;
 
@@ -26,8 +24,7 @@ LmkBit::~LmkBit()
 /// Finalizer
 /// </summary>
 /// <returns></returns>
-LmkBit::!LmkBit()
-{
+LmkBit::!LmkBit() {
 	// release unmanaged resource
 }
 
@@ -36,8 +33,7 @@ LmkBit::!LmkBit()
 /// </summary>
 /// <param name="bit">original bit image</param>
 /// <returns>image</returns>
-LmkBit::LmkBit(LmkBit^ bit)
-{
+LmkBit::LmkBit(LmkBit^ bit) {
 	this->width = this->Width;
 	this->height = this->Height;
 	byte* newByte = nullptr;
@@ -46,43 +42,38 @@ LmkBit::LmkBit(LmkBit^ bit)
 	this->tags = this->tags;
 }
 
-LmkBit^ LmkBit::Clone()
-{
+/// <summary>
+/// Copy object
+/// </summary>
+/// <returns>copied object</returns>
+LmkBit^ LmkBit::Clone() {
 	return gcnew LmkBit(this);
 }
 
-int LmkBit::Width::get()
-{
+int LmkBit::Width::get() {
 	return this->width;
 }
-int LmkBit::Height::get()
-{
+int LmkBit::Height::get() {
 	return this->height;
 }
-int LmkBit::Size::get()
-{
+int LmkBit::Size::get() {
 	return this->width * this->Height;
 }
-int LmkBit::WidthByte::get()
-{
+int LmkBit::WidthByte::get() {
 	double w = (double)this->width / sizeof(byte);
 	return (int)floor(w);
 }
-int LmkBit::HeightByte::get()
-{
+int LmkBit::HeightByte::get() {
 	double h = (double)this->height / sizeof(byte);
 	return (int)floor(h);
 }
-int LmkBit::SizeByte::get()
-{
+int LmkBit::SizeByte::get() {
 	return this->WidthByte * this->HeightByte;
 }
-IntPtr^ LmkBit::Data::get()
-{
+IntPtr^ LmkBit::Data::get() {
 	return gcnew IntPtr(this->data);
 }
-String^ LmkBit::Tags::get()
-{
+String^ LmkBit::Tags::get() {
 	return this->tags;
 }
 

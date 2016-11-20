@@ -128,28 +128,27 @@ LmkRectangleDbl^ LmkVector::SmallestRectangle::get() {
 		return this->smallestRectangle;
 
 	// set initial value
-	double minRow = std::numeric_limits<double>::max(); // compare to maximum
-	double maxRow = std::numeric_limits<double>::min(); // compare to minimum
 	double minCol = std::numeric_limits<double>::max(); // compare to maximum
 	double maxCol = std::numeric_limits<double>::min(); // compare to minimum
+	double minRow = std::numeric_limits<double>::max(); // compare to maximum
+	double maxRow = std::numeric_limits<double>::min(); // compare to minimum
 	for (int i = 0; i < this->coor->size; i++)
 	{
-		if (minRow > this->coor->arr[i].y)
-			minRow = this->coor->arr[i].y;
-		if (maxRow < this->coor->arr[i].y)
-			maxRow = this->coor->arr[i].y;
 		if (minCol > this->coor->arr[i].x)
 			minCol = this->coor->arr[i].x;
 		if (maxCol < this->coor->arr[i].x)
 			maxCol = this->coor->arr[i].x;
+		if (minRow > this->coor->arr[i].y)
+			minRow = this->coor->arr[i].y;
+		if (maxRow < this->coor->arr[i].y)
+			maxRow = this->coor->arr[i].y;
 	}
 
 	// caching
-	this->smallestRectangle = gcnew LmkRectangleDbl(minRow, minCol, maxCol - minCol + 1, maxRow - maxRow + 1);
+	this->smallestRectangle = gcnew LmkRectangleDbl(minCol, minRow, maxCol - minCol + 1, maxRow - maxRow + 1);
 	return this->smallestRectangle;
 }
 
-int LmkVector::Length::get()
-{
+int LmkVector::Length::get() {
 	return this->coor->size;
 }
