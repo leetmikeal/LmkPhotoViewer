@@ -100,10 +100,41 @@ LmkImage::LmkImage(LmkImage^ image)
 /// Load from image file
 /// </summary>
 LmkImage::LmkImage(String^ filePath) {
-	this->width = 0;
-	this->height = 0;
-	this->channel = gcnew array<LmkImageChannel^>{};
-	this->tags = nullptr;
+	//const char* c = static_cast<const char*>(System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath)->ToPointer());
+	const char* c = (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath);
+	cv::Mat cvImage = cv::imread(c, cv::IMREAD_ANYCOLOR);
+	System::Runtime::InteropServices::Marshal::FreeHGlobal((IntPtr)((void*)c));
+
+	this->width = cvImage.cols;
+	this->height = cvImage.rows;
+
+	int size = cvImage.rows * cvImage.cols;
+	if (cvImage.channels() == 1) // gray
+	{
+		byte* d = new byte[size];
+		std::memcpy(d, cvImage.data, size);
+		LmkImageChannel^ channel = gcnew LmkImageChannel(d, cvImage.cols, cvImage.rows, ColorType::Brightness);
+		this->channel = gcnew array<LmkImageChannel^> { channel };
+		this->tags = "";
+	}
+	else if (cvImage.channels() == 3) // RGB color image
+	{
+		cv::Mat cvChannel[3];
+		cv::split(cvImage, cvChannel);
+		this->channel = gcnew array<LmkImageChannel^>(3);
+		for (int i = 0; i < 3; i++)
+		{
+			byte* d = new byte[size];
+			std::memcpy(d, cvChannel[i].data, size);
+			this->channel[i] = gcnew LmkImageChannel(d, cvImage.cols, cvImage.rows, ColorType::Brightness);
+		}
+		this->channel = gcnew array<LmkImageChannel^>{};
+		this->tags = nullptr;
+
+		cvChannel->release();
+	}
+
+	cvImage.release();
 }
 /// <summary>
 /// Destructor
