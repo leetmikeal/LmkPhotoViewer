@@ -48,7 +48,11 @@ namespace LmkImageClrLib {
 		/// Region area size
 		/// </summary>
 		property int AreaSize { int get(); }
-	private:
+	internal:
+		/// <summary>
+		/// Create by inner object
+		/// </summary>
+		LmkRegion(run_length* rl);
 		/// <summary>
 		/// Pointer of run length
 		/// </summary>

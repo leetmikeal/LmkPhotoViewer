@@ -137,6 +137,7 @@
     <ClInclude Include="LmkImage.h" />
     <ClInclude Include="LmkImageClrLib.h" />
     <ClInclude Include="LmkMatrix.h" />
+    <ClInclude Include="LmkOperatorSet.h" />
     <ClInclude Include="LmkPointDbl.h" />
     <ClInclude Include="LmkPointInt.h" />
     <ClInclude Include="LmkRectangleDbl.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="LmkImage.cpp" />
     <ClCompile Include="LmkImageClrLib.cpp" />
     <ClCompile Include="LmkMatrix.cpp" />
+    <ClCompile Include="LmkOperatorSet.cpp" />
     <ClCompile Include="LmkPointDbl.cpp" />
     <ClCompile Include="LmkPointInt.cpp" />
     <ClCompile Include="LmkRectangleDbl.cpp" />

@@ -52,7 +52,7 @@ namespace LmkImageClrLib {
 		/// Image height
 		/// </summary>
 		property int Height { int get(); }
-	private:
+	internal:
 		ColorType color;
 		byte* data;
 		int width;
@@ -103,7 +103,7 @@ namespace LmkImageClrLib {
 		/// Tags
 		/// </summary>
 		property String^ Tags { String^ get(); }
-	private:
+	internal:
 		int width;
 		int height;
 		array<LmkImageChannel^>^ channel;

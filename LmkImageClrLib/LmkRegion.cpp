@@ -66,6 +66,15 @@ LmkRegion::LmkRegion(int row, int column, int width, int height)
 	this->areaSize = width * height;
 	this->smallestRectangle = gcnew LmkRectangleInt(row, column, width, height);
 }
+LmkRegion::LmkRegion(run_length* rl)
+{
+	// body
+	this->rl = rl;
+
+	// cache
+	this->areaSize = -1; // undefined
+	this->smallestRectangle = nullptr;
+}
 
 LmkRectangleInt^ LmkRegion::SmallestRectangle::get()
 {
