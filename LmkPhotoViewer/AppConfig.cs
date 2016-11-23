@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using LmkPhotoViewer.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace LmkPhotoViewer
     {
         private AppConfig()
         {
-            this.Start = new AppStartOption();
+            this.Start = new Startup();
         }
 
         #region singleton instance
@@ -32,11 +33,12 @@ namespace LmkPhotoViewer
 
         #region configuration body
 
-        private AppStartOption start;
+        private Startup start;
         /// <summary>
         /// Startup options
+        /// no serialize, temporal data
         /// </summary>
-        public AppStartOption Start
+        public Startup Start
         {
             get
             {
@@ -49,6 +51,23 @@ namespace LmkPhotoViewer
             }
         }
 
+        private Roaming roaming;
+        /// <summary>
+        /// Startup options
+        /// no serialize, temporal data
+        /// </summary>
+        public Roaming Roaming
+        {
+            get
+            {
+                return roaming;
+            }
+            set
+            {
+                roaming = value;
+                RaisePropertyChanged(() => Roaming);
+            }
+        }
 
         #endregion configuration body
     }

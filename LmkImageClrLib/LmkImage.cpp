@@ -7,6 +7,9 @@ using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
 
+
+#pragma region LmkImageChannel
+#pragma region Constructor
 /// <summary>
 /// Constructor
 /// </summary>
@@ -45,11 +48,6 @@ LmkImageChannel::!LmkImageChannel() {
 	// release unmanaged resource
 }
 
-LmkImageChannel^ LmkImageChannel::Clone() {
-	return gcnew LmkImageChannel(this);
-}
-
-
 LmkImageChannel::LmkImageChannel(byte* data, int width, int height, ColorType colorType)
 {
 	this->data = data;
@@ -57,7 +55,15 @@ LmkImageChannel::LmkImageChannel(byte* data, int width, int height, ColorType co
 	this->height = height;
 	this->color = colorType;
 }
+#pragma endregion
 
+#pragma region Method
+LmkImageChannel^ LmkImageChannel::Clone() {
+	return gcnew LmkImageChannel(this);
+}
+#pragma endregion
+
+#pragma region Property
 ColorType LmkImageChannel::Color::get() {
 	return this->color;
 }
@@ -70,8 +76,12 @@ int LmkImageChannel::Width::get() {
 int LmkImageChannel::Height::get() {
 	return this->height;
 }
+#pragma endregion
+#pragma endregion
 
 
+#pragma region LmkImage
+#pragma region Constructor
 /// <summary>
 /// Constructor
 /// </summary>
@@ -96,6 +106,43 @@ LmkImage::LmkImage(LmkImage^ image)
 	}
 	this->tags = image->tags;
 }
+/// <summary>
+/// Destructor
+/// </summary>
+LmkImage::~LmkImage() {
+	// release managed resource
+
+	this->!LmkImage();
+}
+/// <summary>
+/// Finalizer
+/// </summary>
+LmkImage::!LmkImage() {
+	// release unmanaged resource
+}
+
+/// <summary>
+/// From channel object
+/// </summary>
+/// <param name="image">copied image</param>
+LmkImage::LmkImage(array<LmkImageChannel^>^ channel)
+{
+	if (channel == nullptr)
+		throw gcnew System::ArgumentNullException();
+	else if (channel->Length == 0)
+		throw gcnew System::ArgumentException();
+
+	// get first channel
+	LmkImageChannel^ first = channel[0];
+
+	this->width = first->Width;
+	this->height = first->Height;
+	this->channel = channel;
+	this->tags = "";
+}
+#pragma endregion
+
+#pragma region Method
 /// <summary>
 /// Load from image file
 /// </summary>
@@ -137,25 +184,16 @@ LmkImage::LmkImage(String^ filePath) {
 	cvImage.release();
 }
 /// <summary>
-/// Destructor
-/// </summary>
-LmkImage::~LmkImage() {
-	// release managed resource
-
-	this->!LmkImage();
-}
-/// <summary>
-/// Finalizer
-/// </summary>
-LmkImage::!LmkImage() {
-	// release unmanaged resource
-}
-/// <summary>
 /// Copy object
 /// </summary>
 LmkImage^ LmkImage::Clone() {
 	return gcnew LmkImage(this);
 }
+/// <summary>
+/// Check to contain selecrted color in a image
+/// </summary>
+/// <param name="colorType">selected color</param>
+/// <returns>judge</returns>
 bool LmkImage::ContainChannel(ColorType colorType) {
 	for (int i = 0; i < this->Channel->Length; i++) {
 		if (this->Channel[i]->Color == colorType)
@@ -163,6 +201,11 @@ bool LmkImage::ContainChannel(ColorType colorType) {
 	}
 	return false;
 }
+/// <summary>
+/// Extract specific color single channel image
+/// </summary>
+/// <param name="colorType">selected color</param>
+/// <returns>extracted image</returns>
 LmkImage^ LmkImage::ExtractChannel(ColorType colorType) {
 	LmkImageChannel^ channel = nullptr;
 	for (int i = 0; i < this->Channel->Length; i++) {
@@ -177,26 +220,9 @@ LmkImage^ LmkImage::ExtractChannel(ColorType colorType) {
 	else
 		return gcnew LmkImage(gcnew array<LmkImageChannel^> { channel });
 }
+#pragma endregion
 
-/// <summary>
-/// From channel object
-/// </summary>
-/// <param name="image">copied image</param>
-LmkImage::LmkImage(array<LmkImageChannel^>^ channel)
-{
-	if (channel == nullptr)
-		throw gcnew System::ArgumentNullException();
-	else if (channel->Length == 0)
-		throw gcnew System::ArgumentException();
-
-	// get first channel
-	LmkImageChannel^ first = channel[0];
-
-	this->width = first->Width;
-	this->height = first->Height;
-	this->channel = channel;
-	this->tags = "";
-}
+#pragma region Method
 array<LmkImageChannel^>^ LmkImage::Channel::get() {
 	return this->channel;
 }
@@ -280,4 +306,6 @@ void LmkImage::D::set(array<Byte>^ value) {
 	}
 
 }
+#pragma endregion
+#pragma endregion
 

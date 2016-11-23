@@ -6,14 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LmkPhotoViewer
+namespace LmkPhotoViewer.Config
 {
     /// <summary>
     /// Startup options
     /// </summary>
-    public class AppStartOption : ObservableObject
+    public class Startup : ObservableObject
     {
-        public AppStartOption(string[] args = null)
+        public Startup(string[] args = null)
         {
             if (args == null)
                 return;
@@ -63,7 +63,7 @@ namespace LmkPhotoViewer
             FilePath,
         }
 
-        #region 設定
+        #region data
 
         private string[] originalArgs;
 
@@ -101,6 +101,6 @@ namespace LmkPhotoViewer
             }
         }
 
-        #endregion 設定
+        #endregion 
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using GalaSoft.MvvmLight;
 using LmkImageLib;
+using LmkImageLib.Wpf;
 
 namespace LmkPhotoViewer.ViewModel
 {
@@ -48,7 +49,7 @@ namespace LmkPhotoViewer.ViewModel
         {
             get
             {
-                return Image.ToImageSource();
+                return Image.ToWriteableBitmap();
             }
         }
     }

@@ -14,6 +14,7 @@ namespace LmkImageLib {
 
 	public ref class LmkImageChannel : LmkBase
 	{
+#pragma region Constructor
 	public:
 		/// <summary>
 		/// Constructor
@@ -31,12 +32,24 @@ namespace LmkImageLib {
 		/// Finalizer
 		/// </summary>
 		!LmkImageChannel();
+#pragma endregion
+
+#pragma region Method
+	public:
 		/// <summary>
 		/// Copy object
 		/// </summary>
 		/// <returns></returns>
 		LmkImageChannel^ Clone();
+	internal:
+		/// <summary>
+		/// From byte array
+		/// </summary>
+		LmkImageChannel(byte* data, int width, int height, ColorType colorType);
+#pragma endregion
 
+#pragma region Property
+	public:
 		/// <summary>
 		/// color type
 		/// </summary>
@@ -53,15 +66,16 @@ namespace LmkImageLib {
 		/// Image height
 		/// </summary>
 		property int Height { int get(); }
+#pragma endregion
+
+#pragma region Field
 	internal:
-		/// <summary>
-		/// From byte array
-		/// </summary>
-		LmkImageChannel(byte* data, int width, int height, ColorType colorType);
 		ColorType color;
 		byte* data;
 		int width;
 		int height;
+#pragma endregion
+
 	};
 
 	/// <summary>
@@ -72,6 +86,7 @@ namespace LmkImageLib {
 	[System::Runtime::Serialization::DataContract(Namespace = "")]
 	public ref class LmkImage : LmkBase
 	{
+#pragma region Constructor
 	public:
 		/// <summary>
 		/// Constructor
@@ -93,6 +108,15 @@ namespace LmkImageLib {
 		/// Finalizer
 		/// </summary>
 		!LmkImage();
+	internal:
+		/// <summary>
+		/// From channel object
+		/// </summary>
+		LmkImage(array<LmkImageChannel^>^ image);
+#pragma endregion
+
+#pragma region Method
+	public:
 		/// <summary>
 		/// Copy object
 		/// </summary>
@@ -105,7 +129,10 @@ namespace LmkImageLib {
 		/// Extract single channel image
 		/// </summary>
 		LmkImage^ ExtractChannel(ColorType colorType);
+#pragma endregion
 
+#pragma region Property
+	public:
 		/// <summary>
 		/// Image width
 		/// </summary>
@@ -127,15 +154,15 @@ namespace LmkImageLib {
 		/// </summary>
 		[System::Runtime::Serialization::DataMember(Name = "D")]
 		property array<Byte>^ D { array<Byte>^ get(); void set(array<Byte>^ value); }
+#pragma endregion
+
+#pragma region Field
 	internal:
-		/// <summary>
-		/// From channel object
-		/// </summary>
-		LmkImage(array<LmkImageChannel^>^ image);
 		int width;
 		int height;
 		array<LmkImageChannel^>^ channel;
 		String^ tags;
+#pragma endregion 
 
 	};
 }

@@ -98,6 +98,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -144,8 +145,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Config\AppStartup.cs" />
-    <Compile Include="Config\AppConfig.cs" />
+    <Compile Include="Config\Roaming.cs" />
+    <Compile Include="Config\Startup.cs" />
+    <Compile Include="AppConfig.cs" />
     <Compile Include="Exceptions\CommandArgumentException.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -201,6 +203,10 @@
     <ProjectReference Include="..\LmkImageClrLib\LmkImageClrLib.vcxproj">
       <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
       <Name>LmkImageClrLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LmkImageLib\LmkImageLib.csproj">
+      <Project>{0c1d1252-e7e5-4532-88c6-2abed8446fda}</Project>
+      <Name>LmkImageLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

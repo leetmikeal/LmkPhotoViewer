@@ -32,7 +32,7 @@ namespace LmkPhotoViewer
             {
                 if (e.Args != null && e.Args.Length > 0)
                 {
-                    AppConfig.Instance.Start = new AppStartOption(e.Args);
+                    AppConfig.Instance.Start = new Config.Startup(e.Args);
                 }
             }
             catch(CommandArgumentException)
@@ -45,6 +45,10 @@ namespace LmkPhotoViewer
                     );
             }
 
+            // Open window
+            MainWindow window = new MainWindow();
+            this.MainWindow = window;
+            window.ShowDialog();
 
             base.OnStartup(e);
         }
