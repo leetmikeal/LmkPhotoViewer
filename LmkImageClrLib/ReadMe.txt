@@ -1,29 +1,29 @@
 ========================================================================
-    DYNAMIC LINK LIBRARY : LmkImageClrLib Project Overview
+    DYNAMIC LINK LIBRARY : LmkImageLib Project Overview
 ========================================================================
 
-AppWizard has created this LmkImageClrLib DLL for you.  
+AppWizard has created this LmkImageLib DLL for you.  
 
 This file contains a summary of what you will find in each of the files that
-make up your LmkImageClrLib application.
+make up your LmkImageLib application.
 
-LmkImageClrLib.vcxproj
+LmkImageLib.vcxproj
     This is the main project file for VC++ projects generated using an Application Wizard. 
     It contains information about the version of Visual C++ that generated the file, and 
     information about the platforms, configurations, and project features selected with the
     Application Wizard.
 
-LmkImageClrLib.vcxproj.filters
+LmkImageLib.vcxproj.filters
     This is the filters file for VC++ projects generated using an Application Wizard. 
     It contains information about the association between the files in your project 
     and the filters. This association is used in the IDE to show grouping of files with
     similar extensions under a specific node (for e.g. ".cpp" files are associated with the
     "Source Files" filter).
 
-LmkImageClrLib.cpp
+LmkImageLib.cpp
     This is the main DLL source file.
 
-LmkImageClrLib.h
+LmkImageLib.h
     This file contains a class declaration.
 
 AssemblyInfo.cpp

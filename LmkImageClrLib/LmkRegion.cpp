@@ -4,8 +4,8 @@
 #include "LmkRectangleInt.h"
 
 using namespace System;
-using namespace LmkImageClrLib;
-using namespace LmkImageClrLibUm;
+using namespace LmkImageLib;
+using namespace LmkImageLib;
 
 LmkRegion::LmkRegion()
 {

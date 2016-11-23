@@ -2,6 +2,6 @@
 #include "LmkBase.h"
 
 
-LmkImageClrLib::LmkBase::LmkBase()
+LmkImageLib::LmkBase::LmkBase()
 {
 }

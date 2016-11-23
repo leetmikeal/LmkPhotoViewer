@@ -15,7 +15,7 @@
 #include "LmkRectangleInt.h"
 #include "LmkRectangleDbl.h"
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 	/// <summary>
 	/// Common operator set class
 	/// </summary>

@@ -78,13 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Primitive\LmkBit.cs" />
-    <Compile Include="Primitive\LmkMatrix.cs" />
-    <Compile Include="Primitive\LmkPoint2d.cs" />
-    <Compile Include="Primitive\LmkRectangle.cs" />
-    <Compile Include="Primitive\LmkVector.cs" />
-    <Compile Include="Primitive\LmkRegion.cs" />
-    <Compile Include="Primitive\LmkImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +85,9 @@
       <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
       <Name>LmkImageClrLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Primitive\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

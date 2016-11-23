@@ -4,7 +4,7 @@
 
 typedef unsigned char byte;
 
-namespace LmkImageClrLibUm {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// run 

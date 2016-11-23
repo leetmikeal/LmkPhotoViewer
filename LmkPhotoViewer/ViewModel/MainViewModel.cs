@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using GalaSoft.MvvmLight;
-using LmkImageClrLib;
+using LmkImageLib;
 
 namespace LmkPhotoViewer.ViewModel
 {
@@ -48,7 +48,7 @@ namespace LmkPhotoViewer.ViewModel
         {
             get
             {
-                return null;
+                return Image.ToImageSource();
             }
         }
     }

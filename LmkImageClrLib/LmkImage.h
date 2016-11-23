@@ -10,7 +10,7 @@
 
 using namespace System;
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	public ref class LmkImageChannel : LmkBase
 	{

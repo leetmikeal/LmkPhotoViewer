@@ -1,7 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// basic all data class

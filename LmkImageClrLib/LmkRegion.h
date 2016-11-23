@@ -9,9 +9,9 @@
 #include "LmkRectangleDbl.h"
 
 using namespace System;
-using namespace LmkImageClrLibUm;
+using namespace LmkImageLib;
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// region, same as 1-bit image

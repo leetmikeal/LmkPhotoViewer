@@ -3,7 +3,7 @@
 
 #include "LmkMatrix.h"
 
-using namespace LmkImageClrLibUm;
+using namespace LmkImageLib;
 
 /// <summary>
 /// Rotation of 2d coordinate 

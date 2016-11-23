@@ -3,7 +3,7 @@
 #include "LmkOperatorSetUm.h"
 
 using namespace System;
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
 
 LmkRegion^ LmkOperatorSet::Threshold(LmkImage^ image, byte minVal, byte maxVal)
 {
@@ -114,12 +114,12 @@ LmkImage^ LmkOperatorSet::ConvertColor(LmkImage^ image, ConvertColorType colorTy
 
 	switch (colorType)
 	{
-	case LmkImageClrLib::ConvertColorType::RgbToGray:
+	case LmkImageLib::ConvertColorType::RgbToGray:
 	{
 		byte* red_data = image->ExtractChannel(ColorType::Red)->Channel[0]->data;
 		byte* green_data = image->ExtractChannel(ColorType::Green)->Channel[0]->data;
 		byte* blue_data = image->ExtractChannel(ColorType::Blue)->Channel[0]->data;
-		byte* new_array = LmkImageClrLibUm::RgbToGray(red_data, green_data, blue_data, image->Width, image->Height);
+		byte* new_array = LmkImageLib::RgbToGray(red_data, green_data, blue_data, image->Width, image->Height);
 		LmkImageChannel^ channel = gcnew LmkImageChannel(new_array, image->Width, image->Height, ColorType::Brightness);
 		return gcnew LmkImage(gcnew array<LmkImageChannel^> { channel });
 		break;

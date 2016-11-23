@@ -8,7 +8,7 @@
 
 using namespace System;
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// 1-bit image

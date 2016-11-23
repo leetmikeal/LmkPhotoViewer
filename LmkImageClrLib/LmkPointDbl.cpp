@@ -2,7 +2,7 @@
 #include "LmkPointDbl.h"
 #include "LmkMatrix.h"
 
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
 
 LmkPointDbl::LmkPointDbl(double x, double y) {
 	this->x = x;

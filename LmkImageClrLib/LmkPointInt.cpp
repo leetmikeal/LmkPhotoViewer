@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "LmkPointInt.h"
 
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
 
 LmkPointInt::LmkPointInt(int x, int y)
 {

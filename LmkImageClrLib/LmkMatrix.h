@@ -7,9 +7,9 @@
 
 #include "LmkBase.h"
 
-using namespace LmkImageClrLibUm;
+using namespace LmkImageLib;
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// Affine trans matrix

@@ -5,7 +5,7 @@
 
 #include "LmkBase.h"
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// Integer type rectangle

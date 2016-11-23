@@ -9,13 +9,13 @@
 //#include <cstring>
 
 //using namespace System;
-//using namespace LmkImageClrLib;
-//using namespace LmkImageClrLibUm;
+//using namespace LmkImageLib;
+//using namespace LmkImageLib;
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	ref class LmkRectangleInt;
 	ref class LmkRectangleDbl;

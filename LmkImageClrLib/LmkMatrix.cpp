@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "LmkMatrix.h"
 
-using namespace LmkImageClrLib;
-using namespace LmkImageClrLibUm;
+using namespace LmkImageLib;
+using namespace LmkImageLib;
 
 /// <summary>
 /// Constructor

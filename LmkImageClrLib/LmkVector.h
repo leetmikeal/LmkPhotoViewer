@@ -10,10 +10,10 @@
 #include "LmkRectangleDbl.h"
 
 using namespace System;
-using namespace LmkImageClrLibUm;
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
+using namespace LmkImageLib;
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// 2D line, point array

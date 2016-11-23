@@ -4,7 +4,7 @@
 
 #include <cmath>
 
-namespace LmkImageClrLibUm {
+namespace LmkImageLib {
 	/// <summary>
 	/// converting rgb color to gray image
 	/// </summary>

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "LmkBit.h"
 
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
 
 /// <summary>
 /// Constructor

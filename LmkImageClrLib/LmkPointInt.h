@@ -4,7 +4,7 @@
 
 #include "LmkBase.h"
 
-namespace LmkImageClrLib {
+namespace LmkImageLib {
 
 	/// <summary>
 	/// 2D point

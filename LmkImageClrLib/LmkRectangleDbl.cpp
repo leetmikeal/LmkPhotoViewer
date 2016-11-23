@@ -4,7 +4,7 @@
 #include "LmkVector.h"
 #include "LmkPointDbl.h"
 
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
 
 LmkRectangleDbl::LmkRectangleDbl() {
 	this->column = 0.0;

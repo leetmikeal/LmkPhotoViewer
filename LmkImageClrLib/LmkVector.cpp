@@ -5,8 +5,8 @@
 #include "LmkPointDbl.h"
 #include "LmkMatrix.h"
 
-using namespace LmkImageClrLib;
-using namespace LmkImageClrLibUm;
+using namespace LmkImageLib;
+using namespace LmkImageLib;
 
 /// <summary>
 /// Constructor
@@ -65,7 +65,7 @@ LmkVector::LmkVector(LmkRectangleDbl^ rectangle) {
 	this->coor->arr = new coor2d[4];
 	for (int i = 0; i < 4; i++)
 	{
-		//this->coor->arr[i] = LmkImageClrLibUm::Transform(base_coor[i], mat);
+		//this->coor->arr[i] = LmkImageLib::Transform(base_coor[i], mat);
 		this->coor->arr[i].x = base_coor[i].x * mat->m11 + base_coor[i].y * mat->m12 + mat->offset1;
 		this->coor->arr[i].y = base_coor[i].x * mat->m21 + base_coor[i].y * mat->m22 + mat->offset2;
 	}

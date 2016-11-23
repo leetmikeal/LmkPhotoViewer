@@ -2,7 +2,7 @@
 #include "LmkImage.h"
 #include "LmkOperatorSet.h"
 
-using namespace LmkImageClrLib;
+using namespace LmkImageLib;
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
