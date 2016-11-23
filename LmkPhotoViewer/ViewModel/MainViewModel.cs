@@ -49,6 +49,8 @@ namespace LmkPhotoViewer.ViewModel
         {
             get
             {
+                if (Image == null)
+                    return null;
                 return Image.ToWriteableBitmap();
             }
         }

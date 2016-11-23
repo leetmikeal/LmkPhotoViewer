@@ -53,7 +53,7 @@ double LmkRectangleDbl::Height::get() {
 double LmkRectangleDbl::Angle::get() {
 	return this->angle;
 }
-LmkRectangleDbl^ LmkRectangleDbl::LmkRectangleDbl::SmallestRectangle::get() {
+LmkRectangleDbl^ LmkRectangleDbl::SmallestRectangle::get() {
 	LmkVector^ vector = gcnew LmkVector(this);
 	return vector->SmallestRectangle;
 }
