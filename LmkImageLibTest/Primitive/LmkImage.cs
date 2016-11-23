@@ -11,5 +11,11 @@ namespace LmkImageLibTest
         {
             LmkImage image = new LmkImage();
         }
+
+        [TestMethod]
+        public void TestReadImage()
+        {
+            LmkImage image = new LmkImage();
+        }
     }
 }

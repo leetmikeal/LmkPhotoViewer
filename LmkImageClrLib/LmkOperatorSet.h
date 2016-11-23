@@ -21,14 +21,28 @@ namespace LmkImageLib {
 	/// </summary>
 	public ref class LmkOperatorSet
 	{
+#pragma region General
+	public:
+	internal:
+		static char* ToUnmanagedChar(String^ str);
+		static void ReleaseChar(char* c);
+		static array<Byte>^ Compress(array<Byte>^ row);
+		static array<Byte>^ Decompress(array<Byte>^ compressed);
+#pragma endregion
+#pragma region Convert
 	public:
 		//LmkOperatorSet();
 		static LmkRegion^ Threshold(LmkImage^ image, byte minVal, byte maxVal);
 		static array<LmkRegion^>^ ThresholdMulti(LmkImage^ image, byte minVal, byte maxVal);
 		static LmkImage^ ConvertColor(LmkImage^ image, ConvertColorType colorType);
-	internal:
-		static array<Byte>^ Compress(array<Byte>^ row);
-		static array<Byte>^ Decompress(array<Byte>^ compressed);
+#pragma endregion
+#pragma region Image
+	public:
+		//LmkOperatorSet();
+		static LmkImage^ LoadImage(String^ filePath);
+
+#pragma endregion
+
 	};
 }
 

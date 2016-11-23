@@ -3,8 +3,84 @@
 #include "LmkOperatorSetUm.h"
 
 using namespace System;
+using namespace System::Runtime::InteropServices;
 using namespace LmkImageLib;
 
+#pragma region General
+
+/// <summary>
+/// Convert System::String to unmanaged char type
+/// This char pointer must be release to use (System::Runtime::InteropServices::Marshal::FreeHGlobal(ptr)).
+/// </summary>
+/// <param name="str">string</param>
+/// <returns>char type pointer</returns>
+char* LmkOperatorSet::ToUnmanagedChar(String^ str) {
+	return (char*)Marshal::StringToHGlobalAnsi(str).ToPointer();
+}
+
+void LmkOperatorSet::ReleaseChar(char* c) {
+	Marshal::FreeHGlobal(IntPtr(c));
+}
+
+array<Byte>^ LmkOperatorSet::Compress(array<Byte>^ raw) {
+	if (raw->Length == 0)
+		return gcnew array<Byte> { };
+
+	System::IO::MemoryStream^ memory = gcnew System::IO::MemoryStream();
+	try {
+		System::IO::Compression::GZipStream^ gzip = gcnew System::IO::Compression::GZipStream(
+			memory,
+			System::IO::Compression::CompressionLevel::Fastest,
+			true
+		);
+		try {
+			gzip->Write(raw, 0, raw->Length);
+			return memory->ToArray();
+		}
+		__finally {
+			gzip->Close();
+		}
+	}
+	__finally {
+		memory->Close();
+	}
+}
+
+array<Byte>^ LmkOperatorSet::Decompress(array<Byte>^ compressed) {
+	if (compressed->Length == 0)
+		return gcnew array<Byte>(0);
+
+	System::IO::Compression::GZipStream^ stream = gcnew System::IO::Compression::GZipStream(
+		gcnew System::IO::MemoryStream(compressed), 
+		System::IO::Compression::CompressionMode::Decompress
+	);
+	try {
+		const int size = 65536;
+		array<Byte>^ buffer = gcnew array<Byte>(size);
+		System::IO::MemoryStream^ memory = gcnew System::IO::MemoryStream();
+		try
+		{
+			int count = 0;
+			do {
+				count = stream->Read(buffer, 0, size);
+				if (count > 0)
+					memory->Write(buffer, 0, count);
+			} while (count < 0);
+			return memory->ToArray();
+		}
+		__finally {
+			memory->Close();
+		}
+	}
+	__finally {
+		stream->Close();
+	}
+
+}
+
+#pragma endregion
+
+#pragma region Convert
 LmkRegion^ LmkOperatorSet::Threshold(LmkImage^ image, byte minVal, byte maxVal)
 {
 	if (image->Channel->Length != 1)
@@ -130,60 +206,57 @@ LmkImage^ LmkOperatorSet::ConvertColor(LmkImage^ image, ConvertColorType colorTy
 	}
 }
 
-array<Byte>^ LmkOperatorSet::Compress(array<Byte>^ raw) {
-	if (raw->Length == 0)
-		return gcnew array<Byte> { };
+#pragma endregion
 
-	System::IO::MemoryStream^ memory = gcnew System::IO::MemoryStream();
-	try {
-		System::IO::Compression::GZipStream^ gzip = gcnew System::IO::Compression::GZipStream(
-			memory,
-			System::IO::Compression::CompressionLevel::Fastest,
-			true
-		);
-		try {
-			gzip->Write(raw, 0, raw->Length);
-			return memory->ToArray();
-		}
-		__finally {
-			gzip->Close();
-		}
-	}
-	__finally {
-		memory->Close();
-	}
-}
+#pragma region Image
 
-array<Byte>^ LmkOperatorSet::Decompress(array<Byte>^ compressed) {
-	if (compressed->Length == 0)
-		return gcnew array<Byte>(0);
+LmkImage^ LmkOperatorSet::LoadImage(String^ filePath)
+{
+	// read file
+	const char* filePathChar = LmkOperatorSet::ToUnmanagedChar(filePath);
+	cv::Mat image;
+	cv::String filePathCvs = cv::String(filePathChar);
+	image = cv::imread(filePathChar, cv::IMREAD_UNCHANGED);
+	LmkOperatorSet::ReleaseChar((char*)filePathChar);
 
-	System::IO::Compression::GZipStream^ stream = gcnew System::IO::Compression::GZipStream(
-		gcnew System::IO::MemoryStream(compressed), 
-		System::IO::Compression::CompressionMode::Decompress
-	);
-	try {
-		const int size = 65536;
-		array<Byte>^ buffer = gcnew array<Byte>(size);
-		System::IO::MemoryStream^ memory = gcnew System::IO::MemoryStream();
-		try
-		{
-			int count = 0;
-			do {
-				count = stream->Read(buffer, 0, size);
-				if (count > 0)
-					memory->Write(buffer, 0, count);
-			} while (count < 0);
-			return memory->ToArray();
-		}
-		__finally {
-			memory->Close();
-		}
+	// fetch size
+	int size = image.rows * image.cols;
+
+	// extract pointer
+	if (image.channels() == 1)
+	{
+		byte* byteGray = new byte[size];
+		std::memcpy(byteGray, image.data, sizeof(byte) * size);
+		LmkImageChannel^ channel = gcnew LmkImageChannel(byteGray, image.cols, image.rows, ColorType::Brightness);
+		LmkImage^ lmkImage = gcnew LmkImage(gcnew array<LmkImageChannel^>{ channel });
+		return lmkImage;
 	}
-	__finally {
-		stream->Close();
+	else if (image.channels() == 3)
+	{
+		std::vector<cv::Mat> multiImage;
+		cv::split(image, multiImage);
+
+		byte* byteR = new byte[size];
+		byte* byteG = new byte[size];
+		byte* byteB = new byte[size];
+
+		// OpenCV image order is BGR not RGB
+		std::memcpy(byteR, multiImage[2].data, sizeof(byte) * size);
+		std::memcpy(byteG, multiImage[1].data, sizeof(byte) * size);
+		std::memcpy(byteB, multiImage[0].data, sizeof(byte) * size);
+
+		LmkImageChannel^ channelR = gcnew LmkImageChannel(byteR, image.cols, image.rows, ColorType::Red);
+		LmkImageChannel^ channelG = gcnew LmkImageChannel(byteG, image.cols, image.rows, ColorType::Green);
+		LmkImageChannel^ channelB = gcnew LmkImageChannel(byteB, image.cols, image.rows, ColorType::Blue);
+		LmkImage^ lmkImage = gcnew LmkImage(gcnew array<LmkImageChannel^>{ channelR, channelG, channelB });
+		return lmkImage;
 	}
+	else
+		throw gcnew System::NotSupportedException();
 
 }
+
+
+#pragma endregion
 
 
