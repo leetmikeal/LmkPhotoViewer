@@ -45,6 +45,15 @@ namespace LmkPhotoViewer.ViewModel
             }
         }
 
+        /// <summary>
+        /// Load from file path
+        /// </summary>
+        /// <param name="v"></param>
+        internal void SetImage(string v)
+        {
+            this.Image = new LmkImage(v);
+        }
+
         public System.Windows.Media.ImageSource ImageSource
         {
             get

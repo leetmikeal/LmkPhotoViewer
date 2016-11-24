@@ -175,7 +175,9 @@ LmkImage::LmkImage(String^ filePath) {
 			std::memcpy(d, cvChannel[i].data, size);
 			this->channel[i] = gcnew LmkImageChannel(d, cvImage.cols, cvImage.rows, ColorType::Brightness);
 		}
-		this->channel = gcnew array<LmkImageChannel^>{};
+		this->Channel[0]->color = ColorType::Red;
+		this->Channel[1]->color = ColorType::Blue;
+		this->Channel[2]->color = ColorType::Green;
 		this->tags = nullptr;
 
 		cvChannel->release();

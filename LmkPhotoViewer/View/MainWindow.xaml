@@ -8,8 +8,13 @@
     mc:Ignorable="d"
     Title="MainWindow"
     Height="350"
-    Width="525">
-    <Grid>
+    Width="525"
+    Drop="Window_Drop"
+    PreviewDragOver="Window_PreviewDragOver"
+    AllowDrop="True"
+    >
+    <Grid
+        >
         <Image Source="{Binding ImageSource}" />
     </Grid>
 </Window>
