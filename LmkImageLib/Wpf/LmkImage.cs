@@ -36,6 +36,25 @@ namespace LmkImageLib.Wpf
                 return wbm;
                 //return new WriteableBitmap(width, height, dpiX, dpiY, PixelFormats.Bgr24, null);
             }
+            else if (image.Channel.Length == 3)
+            {
+                IntPtr dataR = image.Channel[0].Data;
+                IntPtr dataG = image.Channel[1].Data;
+                IntPtr dataB = image.Channel[2].Data;
+
+                byte[] byteArray = new byte[size * 3];
+                fixed (byte* ptr = &byteArray[0])
+                {
+                    LmkOperatorSet.ConvByte3to1((byte*)dataR, (byte*)dataG, (byte*)dataB, ptr, size);
+                }
+
+                var pixelFormat = PixelFormats.Bgr24;
+                var stride = width * 3;
+                var bitmap = BitmapImage.Create(width, height, dpiX, dpiY, pixelFormat, null, byteArray, stride);
+                WriteableBitmap wbm = new WriteableBitmap(bitmap);
+                return wbm;
+                //return new WriteableBitmap(width, height, dpiX, dpiY, PixelFormats.Bgr24, null);
+            }
             //else if(image.Channel.Length == 3)
             //{
             //    IntPtr dataR = image.Channel[0].Data;

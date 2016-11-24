@@ -260,3 +260,44 @@ LmkImage^ LmkOperatorSet::LoadImage(String^ filePath)
 #pragma endregion
 
 
+#pragma region UnmanagedWrapper
+void LmkOperatorSet::ConvByte1to3(byte source[], byte channel1[], byte channel2[], byte channel3[], int size)
+{
+	LmkImageLib::ConvByte1to3(source, channel1, channel2, channel3, size);
+}
+
+void LmkOperatorSet::ConvByte1to3Stride(byte source[], byte channel1[], byte channel2[], byte channel3[], int width, int height, int stride)
+{
+	LmkImageLib::ConvByte1to3Stride(source, channel1, channel2, channel3, width, height, stride);
+}
+
+
+void LmkOperatorSet::ConvByte1to4(byte source[], byte channel1[], byte channel2[], byte channel3[], byte channel4[], int size)
+{
+	LmkImageLib::ConvByte1to4(source, channel1, channel2, channel3, channel4, size);
+}
+
+void LmkOperatorSet::ConvByte3to1(byte source1[], byte source2[], byte source3[], byte outcome[], int size)
+{
+	LmkImageLib::ConvByte3to1(source1, source2, source3, outcome, size);
+}
+
+void LmkOperatorSet::ConvByte3to1Stride(byte source1[], byte source2[], byte source3[], int width, int height, byte outcome[], int stride)
+{
+	LmkImageLib::ConvByte3to1Stride(source1, source2, source3, width, height, outcome, stride);
+}
+
+void LmkOperatorSet::ConvByte4to1(byte source1[], byte source2[], byte source3[], byte source4[], byte outcome[], int size)
+{
+	LmkImageLib::ConvByte4to1(source1, source2, source3, source4, outcome, size);
+}
+
+
+void LmkOperatorSet::TranslateArray(double source[], double num, int size)
+{
+	LmkImageLib::TranslateArray(source, num, size);
+}
+
+#pragma endregion
+
+

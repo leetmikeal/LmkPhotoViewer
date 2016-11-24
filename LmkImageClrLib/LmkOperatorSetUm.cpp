@@ -4,6 +4,8 @@
 
 using namespace LmkImageLib;
 
+#pragma unmanaged
+
 byte* LmkImageLib::RgbToGray(byte* red, byte* green, byte* blue, int width, int height)
 {
 	int size = width * height;
