@@ -12,9 +12,15 @@
     Drop="Window_Drop"
     PreviewDragOver="Window_PreviewDragOver"
     AllowDrop="True"
+    xmlns:v="clr-namespace:LmkPhotoViewer.View"
     >
-    <Grid
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto"
+        HorizontalScrollBarVisibility="Auto"
         >
-        <Image Source="{Binding ImageSource}" />
-    </Grid>
+        <v:MovableImage 
+            Source="{Binding ImageSource}" 
+            >
+        </v:MovableImage>
+    </ScrollViewer>
 </Window>
