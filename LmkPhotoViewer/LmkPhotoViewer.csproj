@@ -149,6 +149,8 @@
     <Compile Include="Config\Startup.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Exceptions\CommandArgumentException.cs" />
+    <Compile Include="Model\NotificationObject.cs" />
+    <Compile Include="Model\Controls\MovableImageState.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="Themes\Generic.xaml">
@@ -163,7 +165,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Controls\IMovableImageMatrix.cs" />
     <Compile Include="View\Controls\MovableImage.cs" />
+    <Compile Include="Model\Controls\Enums.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -197,9 +201,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\LmkImageClrLib\LmkImageClrLib.vcxproj">
       <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>

@@ -4,20 +4,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
     xmlns:local="clr-namespace:LmkPhotoViewer"
+    xmlns:view="clr-namespace:LmkPhotoViewer.View"
+    xmlns:controls="clr-namespace:LmkPhotoViewer.View.Controls"
     mc:Ignorable="d"
-    Title="MainWindow"
+    Title="{Binding WindowTitle}"
     Height="350"
     Width="525"
     Drop="Window_Drop"
     PreviewDragOver="Window_PreviewDragOver"
     AllowDrop="True"
-    xmlns:v="clr-namespace:LmkPhotoViewer.View"
     >
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseWheel">
+            <cmd:EventToCommand Command="{Binding MouseWheelCommand}" PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
     <Grid>
-        <v:MovableImage 
+        <controls:MovableImage 
             Source="{Binding ImageSource}" 
-            >
-        </v:MovableImage>
+            Matrix="{Binding ImageViewState.Matrix}"
+            ZoomStep="{Binding ImageViewState.ZoomStep}"
+            />
     </Grid>
 </Window>

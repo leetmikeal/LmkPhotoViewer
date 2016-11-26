@@ -3,6 +3,11 @@ using System.Linq;
 using GalaSoft.MvvmLight;
 using LmkImageLib;
 using LmkImageLib.Wpf;
+using GalaSoft.MvvmLight.CommandWpf;
+using System.Windows.Input;
+using LmkPhotoViewer.View.Controls;
+using System.Windows.Media;
+using LmkPhotoViewer.Model.Controls;
 
 namespace LmkPhotoViewer.ViewModel
 {
@@ -44,6 +49,24 @@ namespace LmkPhotoViewer.ViewModel
 
         #region Property
 
+        private string windowTitle = "LmkPhotoViewer";
+
+        /// <summary>
+        /// Window title
+        /// </summary>
+        public string WindowTitle
+        {
+            get
+            {
+                return windowTitle;
+            }
+            set
+            {
+                windowTitle = value;
+                RaisePropertyChanged(() => WindowTitle);
+            }
+        }
+
         private LmkImage image;
 
         /// <summary>
@@ -63,6 +86,24 @@ namespace LmkPhotoViewer.ViewModel
             }
         }
 
+        private MovableImageState imageViewState;
+
+        /// <summary>
+        /// Image view state
+        /// </summary>
+        public MovableImageState ImageViewState
+        {
+            get
+            {
+                return imageViewState;
+            }
+            set
+            {
+                imageViewState = value;
+                RaisePropertyChanged(() => ImageViewState);
+            }
+        }
+
         /// <summary>
         /// Displaying image convert from source image
         /// </summary>
@@ -75,6 +116,23 @@ namespace LmkPhotoViewer.ViewModel
                 return Image.ToWriteableBitmap();
             }
         }
+
+        #endregion
+
+        #region Command
+
+        //private RelayCommand<MouseWheelEventArgs> mouseWheelCommand;
+        //public RelayCommand<MouseWheelEventArgs> MouseWheelCommand
+        //{
+        //    get
+        //    {
+        //        return mouseWheelCommand ?? (mouseWheelCommand = new RelayCommand<MouseWheelEventArgs>((e) =>
+        //        {
+        //            if (e.Delta > 0)
+        //                this.Scale(e.GetPosition);
+        //        }));
+        //    }
+        //}
 
         #endregion
     }

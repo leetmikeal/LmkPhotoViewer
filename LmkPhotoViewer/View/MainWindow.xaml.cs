@@ -48,5 +48,6 @@ namespace LmkPhotoViewer
                 e.Effects = DragDropEffects.None;
             e.Handled = true;
         }
+
     }
 }

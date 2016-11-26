@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LmkPhotoViewer.Model.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LmkPhotoViewer.View
+namespace LmkPhotoViewer.View.Controls
 {
     /// <summary>
     /// Follow steps 1a or 1b and then 2 to use this custom control in a XAML file.
@@ -44,7 +45,7 @@ namespace LmkPhotoViewer.View
     ///     <MyNamespace:MovableImage/>
     ///
     /// </summary>
-    public class MovableImage : Image
+    public class MovableImage : Image, IMovableImageMatrix
     {
         static MovableImage()
         {
@@ -53,62 +54,147 @@ namespace LmkPhotoViewer.View
 
         public MovableImage()
         {
-            this.RenderTransform = new MatrixTransform();
+        }
+
+        #region override method
+
+        protected override void OnMouseWheel(MouseWheelEventArgs e)
+        {
+            var position = e.GetPosition(this);
+            if (e.Delta > 0)
+                this.Scale(position.X, position.Y, MovableImageZoomType.ZoomUp);
+            else 
+                this.Scale(position.X, position.Y, MovableImageZoomType.ZoomDown);
+
+            base.OnMouseWheel(e);
+        }
+
+        private bool isDragging = false;
+        private Matrix startMatrix = Matrix.Identity;
+        private Point startPoint;
+
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            this.startMatrix = this.Matrix;
+            this.startPoint = e.GetPosition(this);
+
+            base.OnMouseDown(e);
+        }
+
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                var matrix = this.startMatrix;
+                var point = e.GetPosition(this);
+                //matrix.Translate(point.X - this.startPoint.X, point.Y - this.startPoint.Y);
+                matrix.Translate(this.startPoint.X - point.X, this.startPoint.Y - point.Y);
+                this.Matrix = matrix;
+            }
+
+            base.OnMouseMove(e);
         }
 
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
+            // If image is changed, then fit to window.
             if (e.Property == Image.SourceProperty)
-                FitImage(100, 100);
+                FitImage(this.ActualWidth, this.ActualHeight);
 
             base.OnPropertyChanged(e);
         }
 
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            FitImage(this.ActualWidth, this.ActualHeight);
+
+            base.OnRenderSizeChanged(sizeInfo);
+        }
+
+        #endregion
 
         #region Dependency Property
 
-        ///// <summary>
-        ///// Image transformation matrix
-        ///// </summary>
-        //public static readonly DependencyProperty MatrixProperty =
-        //    DependencyProperty.Register("Matrix",
-        //    typeof(System.Windows.Media.Matrix),
-        //    typeof(MovableImage),
-        //    new PropertyMetadata(Matrix.Identity));
+        /// <summary>
+        /// Image transformation matrix
+        /// </summary>
+        public static readonly DependencyProperty MatrixProperty =
+            DependencyProperty.Register("Matrix",
+            typeof(System.Windows.Media.Matrix),
+            typeof(MovableImage),
+            new PropertyMetadata(Matrix.Identity, new PropertyChangedCallback(OnMatrixPropertyChanged)));
 
-        ///// <summary>
-        ///// Image transformation matrix
-        ///// </summary>
-        //public System.Windows.Media.Matrix Matrix
-        //{
-        //    get { return (System.Windows.Media.Matrix)GetValue(MatrixProperty); }
-        //    set 
-        //    {
-        //        SetValue(MatrixProperty, (System.Windows.Media.Matrix)value);
-        //    }
-        //}
+        private static void OnMatrixPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            MovableImage control = d as MovableImage;
+            control.SetMatrix((Matrix)e.NewValue);
+        }
+
+        /// <summary>
+        /// Image transformation matrix
+        /// </summary>
+        public System.Windows.Media.Matrix Matrix
+        {
+            get { return (System.Windows.Media.Matrix)GetValue(MatrixProperty); }
+            set
+            {
+                SetValue(MatrixProperty, (System.Windows.Media.Matrix)value);
+            }
+        }
+
+        /// <summary>
+        /// Image zoom rate step
+        /// </summary>
+        public static readonly DependencyProperty ZoomStepProperty =
+            DependencyProperty.Register("ZoomStep",
+            typeof(double),
+            typeof(MovableImage),
+            new PropertyMetadata(0.1));
+
+        /// <summary>
+        /// Image zoom rate step
+        /// </summary>
+        public double ZoomStep
+        {
+            get { return (double)GetValue(ZoomStepProperty); }
+            set
+            {
+                SetValue(ZoomStepProperty, (double)value);
+            }
+        }
 
         #endregion Dependency Property
 
-        #region Methods
+        #region Property
 
-        public void FitImage(int width, int height)
+        #endregion
+
+        #region Public Methods
+
+        public void FitImage(double width, double height)
         {
             var size = GetImageSize();
             double unifiedRate = Math.Min(width / size.Width, height / size.Height);
+            if (double.IsInfinity(unifiedRate) || double.IsNaN(unifiedRate))
+                return;
 
             var matrix = Matrix.Identity;
             matrix.Scale(unifiedRate, unifiedRate);
-            SetMatrix(matrix);
+            this.Matrix = matrix;
         }
+
+        #endregion
+
+        #region Private Methods
 
         private void SetMatrix(Matrix mat)
         {
-            var transform = this.RenderTransform as MatrixTransform;
-            if (transform == null)
-                return;
-
-            transform.Matrix = mat;
+            this.RenderTransform = new MatrixTransform(mat);
         }
 
         /// <summary>
@@ -123,6 +209,6 @@ namespace LmkPhotoViewer.View
             return new Size(this.Source.Width, this.Source.Height);
         }
 
-        #endregion Methods
+        #endregion 
     }
 }
