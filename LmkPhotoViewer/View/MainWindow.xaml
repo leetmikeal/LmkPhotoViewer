@@ -14,13 +14,10 @@
     AllowDrop="True"
     xmlns:v="clr-namespace:LmkPhotoViewer.View"
     >
-    <ScrollViewer
-        VerticalScrollBarVisibility="Auto"
-        HorizontalScrollBarVisibility="Auto"
-        >
+    <Grid>
         <v:MovableImage 
             Source="{Binding ImageSource}" 
             >
         </v:MovableImage>
-    </ScrollViewer>
+    </Grid>
 </Window>

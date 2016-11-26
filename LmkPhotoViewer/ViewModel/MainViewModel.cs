@@ -29,8 +29,26 @@ namespace LmkPhotoViewer.ViewModel
             }
         }
 
+        #region Method
+
+        /// <summary>
+        /// Load from file path
+        /// </summary>
+        /// <param name="v"></param>
+        internal void SetImage(string v)
+        {
+            this.Image = new LmkImage(v);
+        }
+
+        #endregion
+
+        #region Property
+
         private LmkImage image;
 
+        /// <summary>
+        /// Source image
+        /// </summary>
         public LmkImage Image
         {
             get
@@ -46,14 +64,8 @@ namespace LmkPhotoViewer.ViewModel
         }
 
         /// <summary>
-        /// Load from file path
+        /// Displaying image convert from source image
         /// </summary>
-        /// <param name="v"></param>
-        internal void SetImage(string v)
-        {
-            this.Image = new LmkImage(v);
-        }
-
         public System.Windows.Media.ImageSource ImageSource
         {
             get
@@ -63,5 +75,7 @@ namespace LmkPhotoViewer.ViewModel
                 return Image.ToWriteableBitmap();
             }
         }
+
+        #endregion
     }
 }

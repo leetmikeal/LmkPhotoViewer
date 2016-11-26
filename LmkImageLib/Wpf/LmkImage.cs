@@ -14,6 +14,11 @@ namespace LmkImageLib.Wpf
     /// </summary>
     public static class LmkImageExtension
     {
+        /// <summary>
+        /// Convert from LmkImage to WriteableBitmap type
+        /// </summary>
+        /// <param name="image">from</param>
+        /// <returns>to</returns>
         public unsafe static WriteableBitmap ToWriteableBitmap(this LmkImage image)
         {
             int width = image.Width;
@@ -55,6 +60,8 @@ namespace LmkImageLib.Wpf
                 return wbm;
                 //return new WriteableBitmap(width, height, dpiX, dpiY, PixelFormats.Bgr24, null);
             }
+            else
+                throw new NotSupportedException(string.Format("not support channel : {0}", image.Channel.Length));
             //else if(image.Channel.Length == 3)
             //{
             //    IntPtr dataR = image.Channel[0].Data;

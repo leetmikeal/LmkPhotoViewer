@@ -87,13 +87,18 @@ namespace LmkPhotoViewer
         {
             if(e.Exception is OverflowException && e.Exception.Source == "PresentationFramework")
             {
-
             }
             else
             {
-                // Showing window
+                //// Showing window
                 //ErrorWindow errorWindow = new ErrorWindow(e.Exception);
                 //errorWindow.ShowDialog();
+                MessageBox.Show(
+                    e.Exception.Message,
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                    );
             }
 
             e.Handled = true;
