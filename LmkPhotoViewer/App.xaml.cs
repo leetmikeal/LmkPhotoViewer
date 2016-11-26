@@ -35,10 +35,10 @@ namespace LmkPhotoViewer
                     AppConfig.Instance.Start = new Config.Startup(e.Args);
                 }
             }
-            catch(CommandArgumentException)
+            catch(CommandArgumentException ex)
             {
                 MessageBox.Show(
-                    string.Format("args error: {0}", string.Join(" ", e.Args)),
+                    string.Format("args error: {0}", string.Join(" ", ex.Command)),
                     "Argument Error",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error

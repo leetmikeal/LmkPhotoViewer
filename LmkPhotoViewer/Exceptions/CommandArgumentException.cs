@@ -9,12 +9,18 @@ namespace LmkPhotoViewer
 {
     public class CommandArgumentException : InvalidOperationException
     {
+        public string Command
+        {
+            get;
+            private set;
+        }
+
         // 概要:
         //     Initializes a new instance of the System.CommandArgumentException class.
-        public CommandArgumentException()
+        public CommandArgumentException(string command)
             :base()
         {
-
+            this.Command = command;
         }
         //
         // 概要:
@@ -24,10 +30,10 @@ namespace LmkPhotoViewer
         // パラメーター:
         //   message:
         //     The message that describes the error.
-        public CommandArgumentException(string message)
+        public CommandArgumentException(string command, string message)
             :base(message)
         {
-
+            this.Command = command;
         }
         //
         // 概要:

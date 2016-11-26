@@ -47,11 +47,11 @@ namespace LmkPhotoViewer.Config
                         }
                 }
 
-                throw new CommandArgumentException();
+                throw new CommandArgumentException(string.Join(" ", args));
             }
 
             if(state != ArgsState.None)
-                throw new CommandArgumentException();
+                throw new CommandArgumentException(string.Join(" ", args));
         }
 
         /// <summary>
