@@ -82,7 +82,6 @@ namespace LmkPhotoViewer.ViewModel
             {
                 image = value;
                 RaisePropertyChanged(() => Image);
-                RaisePropertyChanged(() => ImageSource);
             }
         }
 
@@ -101,19 +100,6 @@ namespace LmkPhotoViewer.ViewModel
             {
                 imageViewState = value;
                 RaisePropertyChanged(() => ImageViewState);
-            }
-        }
-
-        /// <summary>
-        /// Displaying image convert from source image
-        /// </summary>
-        public System.Windows.Media.ImageSource ImageSource
-        {
-            get
-            {
-                if (Image == null)
-                    return null;
-                return Image.ToWriteableBitmap();
             }
         }
 

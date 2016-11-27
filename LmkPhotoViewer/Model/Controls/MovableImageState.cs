@@ -25,7 +25,7 @@ namespace LmkPhotoViewer.Model.Controls
 
         #region Property
 
-        private double zoomStep = 0.1;
+        private double zoomStep = 0.2;
 
         /// <summary>
         /// Image display zoom step

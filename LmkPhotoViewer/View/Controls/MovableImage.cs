@@ -1,6 +1,9 @@
-﻿using LmkPhotoViewer.Model.Controls;
+﻿using LmkImageLib;
+using LmkImageLib.Wpf;
+using LmkPhotoViewer.Model.Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,14 +26,14 @@ namespace LmkPhotoViewer.View.Controls
     /// Add this XmlNamespace attribute to the root element of the markup file where it is 
     /// to be used:
     ///
-    ///     xmlns:MyNamespace="clr-namespace:LmkPhotoViewer.View.Control"
+    ///     xmlns:MyNamespace="clr-namespace:LmkPhotoViewer.View.Controls"
     ///
     ///
     /// Step 1b) Using this custom control in a XAML file that exists in a different project.
     /// Add this XmlNamespace attribute to the root element of the markup file where it is 
     /// to be used:
     ///
-    ///     xmlns:MyNamespace="clr-namespace:LmkPhotoViewer.View.Control;assembly=LmkPhotoViewer.View.Control"
+    ///     xmlns:MyNamespace="clr-namespace:LmkPhotoViewer.View.Controls;assembly=LmkPhotoViewer.View.Controls"
     ///
     /// You will also need to add a project reference from the project where the XAML file lives
     /// to this project and Rebuild to avoid compilation errors:
@@ -45,7 +48,7 @@ namespace LmkPhotoViewer.View.Controls
     ///     <MyNamespace:MovableImage/>
     ///
     /// </summary>
-    public class MovableImage : Image, IMovableImageMatrix
+    public class MovableImage : Canvas, IMovableImageMatrix
     {
         static MovableImage()
         {
@@ -54,7 +57,14 @@ namespace LmkPhotoViewer.View.Controls
 
         public MovableImage()
         {
+            this.imageControl = new Image();
+            this.imageControl.RenderTransform = new MatrixTransform();
+            RenderOptions.SetBitmapScalingMode(this.imageControl, BitmapScalingMode.NearestNeighbor);
+
+            this.Children.Add(this.imageControl);
         }
+
+        private Image imageControl;
 
         #region override method
 
@@ -75,14 +85,23 @@ namespace LmkPhotoViewer.View.Controls
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
-            this.startMatrix = this.Matrix;
-            this.startPoint = e.GetPosition(this);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.startMatrix = this.Matrix;
+                this.startPoint = e.GetPosition(this);
+
+                CaptureMouse();
+            }
 
             base.OnMouseDown(e);
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
+            if(e.LeftButton == MouseButtonState.Released)
+            {
+                ReleaseMouseCapture();
+            }
             base.OnMouseUp(e);
         }
 
@@ -92,21 +111,11 @@ namespace LmkPhotoViewer.View.Controls
             {
                 var matrix = this.startMatrix;
                 var point = e.GetPosition(this);
-                //matrix.Translate(point.X - this.startPoint.X, point.Y - this.startPoint.Y);
-                matrix.Translate(this.startPoint.X - point.X, this.startPoint.Y - point.Y);
+                matrix.Translate(point.X - this.startPoint.X, point.Y - this.startPoint.Y);
                 this.Matrix = matrix;
             }
 
             base.OnMouseMove(e);
-        }
-
-        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
-        {
-            // If image is changed, then fit to window.
-            if (e.Property == Image.SourceProperty)
-                FitImage(this.ActualWidth, this.ActualHeight);
-
-            base.OnPropertyChanged(e);
         }
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
@@ -119,6 +128,40 @@ namespace LmkPhotoViewer.View.Controls
         #endregion
 
         #region Dependency Property
+
+        /// <summary>
+        /// Image transformation matrix
+        /// </summary>
+        public static readonly DependencyProperty SourceProperty =
+            DependencyProperty.Register("Source",
+            typeof(LmkImage),
+            typeof(MovableImage),
+            new PropertyMetadata(null, new PropertyChangedCallback(OnSourcePropertyChanged)));
+
+        private static void OnSourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MovableImage;
+            if (control.imageControl == null)
+                return;
+
+            var image = e.NewValue as LmkImage;
+            if (image == null)
+                return;
+
+            control.imageControl.Source = image.ToWriteableBitmap();
+        }
+
+        /// <summary>
+        /// Image transformation matrix
+        /// </summary>
+        public LmkImage Source
+        {
+            get { return (LmkImage)GetValue(SourceProperty); }
+            set
+            {
+                SetValue(SourceProperty, (LmkImage)value);
+            }
+        }
 
         /// <summary>
         /// Image transformation matrix
@@ -154,7 +197,7 @@ namespace LmkPhotoViewer.View.Controls
             DependencyProperty.Register("ZoomStep",
             typeof(double),
             typeof(MovableImage),
-            new PropertyMetadata(0.1));
+            new PropertyMetadata(0.2));
 
         /// <summary>
         /// Image zoom rate step
@@ -194,7 +237,8 @@ namespace LmkPhotoViewer.View.Controls
 
         private void SetMatrix(Matrix mat)
         {
-            this.RenderTransform = new MatrixTransform(mat);
+            var matrixTransform = this.imageControl.RenderTransform as MatrixTransform;
+            matrixTransform.Matrix = mat;
         }
 
         /// <summary>

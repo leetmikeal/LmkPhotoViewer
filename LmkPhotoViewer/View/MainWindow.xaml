@@ -24,7 +24,7 @@
     </i:Interaction.Triggers>-->
     <Grid>
         <controls:MovableImage 
-            Source="{Binding ImageSource}" 
+            Source="{Binding Image}" 
             Matrix="{Binding ImageViewState.Matrix}"
             ZoomStep="{Binding ImageViewState.ZoomStep}"
             />

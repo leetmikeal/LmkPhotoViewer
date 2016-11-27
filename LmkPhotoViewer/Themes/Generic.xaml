@@ -7,6 +7,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MovableImage}">
+                    <Image 
+                        Source="{TemplateBinding Source}"
+                        >
+                        <Image.RenderTransform>
+                            <MatrixTransform Matrix="{TemplateBinding Matrix}" />
+                        </Image.RenderTransform>
+                    </Image>
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
