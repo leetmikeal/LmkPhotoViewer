@@ -13,18 +13,17 @@
     Title="{Binding WindowTitle}"
     Height="350"
     Width="525"
-    Drop="Window_Drop"
     PreviewDragOver="Window_PreviewDragOver"
     AllowDrop="True"
     >
-    <!--<i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseWheel">
-            <cmd:EventToCommand Command="{Binding MouseWheelCommand}" PassEventArgsToCommand="True" />
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Drop">
+            <cmd:EventToCommand Command="{Binding DropCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
-    </i:Interaction.Triggers>-->
+    </i:Interaction.Triggers>
     <Grid>
         <controls:MovableImage 
-            Source="{Binding Image}" 
+            Source="{Binding Image.Source}" 
             Matrix="{Binding ImageViewState.Matrix}"
             ZoomStep="{Binding ImageViewState.ZoomStep}"
             />

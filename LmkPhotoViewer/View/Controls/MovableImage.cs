@@ -149,6 +149,7 @@ namespace LmkPhotoViewer.View.Controls
                 return;
 
             control.imageControl.Source = image.ToWriteableBitmap();
+            control.FitImage();
         }
 
         /// <summary>
@@ -219,6 +220,19 @@ namespace LmkPhotoViewer.View.Controls
 
         #region Public Methods
 
+        /// <summary>
+        /// Fit to visible window size
+        /// </summary>
+        public void FitImage()
+        {
+            FitImage(this.ActualWidth, this.ActualHeight);
+        }
+
+        /// <summary>
+        /// Fit to given size
+        /// </summary>
+        /// <param name="width">fit width</param>
+        /// <param name="height">fit height</param>
         public void FitImage(double width, double height)
         {
             var size = GetImageSize();
@@ -228,6 +242,7 @@ namespace LmkPhotoViewer.View.Controls
 
             var matrix = Matrix.Identity;
             matrix.Scale(unifiedRate, unifiedRate);
+            matrix.Translate(Math.Abs(unifiedRate * size.Width - width) / 2.0, Math.Abs(unifiedRate * size.Height - height) / 2.0); // align center
             this.Matrix = matrix;
         }
 

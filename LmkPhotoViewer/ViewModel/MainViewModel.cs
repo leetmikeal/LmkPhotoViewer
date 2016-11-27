@@ -8,6 +8,7 @@ using System.Windows.Input;
 using LmkPhotoViewer.View.Controls;
 using System.Windows.Media;
 using LmkPhotoViewer.Model.Controls;
+using System.Windows;
 
 namespace LmkPhotoViewer.ViewModel
 {
@@ -30,26 +31,15 @@ namespace LmkPhotoViewer.ViewModel
             // load initial image
             if(System.IO.File.Exists(AppConfig.Instance.Start.FilePath))
             {
-                this.Image = new LmkImage(AppConfig.Instance.Start.FilePath);
+                this.Image = new DisplayImage(AppConfig.Instance.Start.FilePath);
             }
         }
 
         #region Method
 
-        /// <summary>
-        /// Load from file path
-        /// </summary>
-        /// <param name="v"></param>
-        internal void SetImage(string v)
-        {
-            this.Image = new LmkImage(v);
-        }
-
         #endregion
 
         #region Property
-
-        private string windowTitle = "LmkPhotoViewer";
 
         /// <summary>
         /// Window title
@@ -58,21 +48,23 @@ namespace LmkPhotoViewer.ViewModel
         {
             get
             {
-                return windowTitle;
-            }
-            set
-            {
-                windowTitle = value;
-                RaisePropertyChanged(() => WindowTitle);
+                if (this.Image == null)
+                    return "LmkPhotoViewer";
+                else
+                {
+                    return this.Image.FilePath;
+                }
+
+                return "";
             }
         }
 
-        private LmkImage image;
+        private DisplayImage image;
 
         /// <summary>
         /// Source image
         /// </summary>
-        public LmkImage Image
+        public DisplayImage Image
         {
             get
             {
@@ -82,6 +74,7 @@ namespace LmkPhotoViewer.ViewModel
             {
                 image = value;
                 RaisePropertyChanged(() => Image);
+                RaisePropertyChanged(() => WindowTitle);
             }
         }
 
@@ -107,18 +100,21 @@ namespace LmkPhotoViewer.ViewModel
 
         #region Command
 
-        //private RelayCommand<MouseWheelEventArgs> mouseWheelCommand;
-        //public RelayCommand<MouseWheelEventArgs> MouseWheelCommand
-        //{
-        //    get
-        //    {
-        //        return mouseWheelCommand ?? (mouseWheelCommand = new RelayCommand<MouseWheelEventArgs>((e) =>
-        //        {
-        //            if (e.Delta > 0)
-        //                this.Scale(e.GetPosition);
-        //        }));
-        //    }
-        //}
+        private RelayCommand<DragEventArgs> dropCommand;
+        public RelayCommand<DragEventArgs> DropCommand
+        {
+            get
+            {
+                return dropCommand ?? (dropCommand = new RelayCommand<DragEventArgs>((e) =>
+                {
+                    string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
+                    if (files != null && files.Length > 0)
+                    {
+                        this.Image = new DisplayImage(files[0]);
+                    }
+                }));
+            }
+        }
 
         #endregion
     }
