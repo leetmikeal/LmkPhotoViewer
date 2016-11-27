@@ -1,14 +1,16 @@
-using System;
-using System.Linq;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using LmkImageLib;
 using LmkImageLib.Wpf;
-using GalaSoft.MvvmLight.CommandWpf;
-using System.Windows.Input;
-using LmkPhotoViewer.View.Controls;
-using System.Windows.Media;
+using LmkPhotoViewer.Model;
 using LmkPhotoViewer.Model.Controls;
+using LmkPhotoViewer.View.Controls;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace LmkPhotoViewer.ViewModel
 {
@@ -33,9 +35,43 @@ namespace LmkPhotoViewer.ViewModel
             {
                 this.Image = new DisplayImage(AppConfig.Instance.Start.FilePath);
             }
+
+            // Raise thread
+            AsyncStartCheckFileThread();
         }
 
         #region Method
+
+        private async void AsyncStartCheckFileThread()
+        {
+            for(;;)
+            {
+                try
+                {
+                    await Task.Run(() => StartCheckFileThread());
+                }
+                catch
+                {
+                    // ignore error
+                }
+            }
+        }
+
+        private void StartCheckFileThread()
+        {
+            for(;;)
+            {
+                if(this.Image  != null && this.Image.FileInfo != null)
+                {
+                    bool? updated = this.Image.FileInfo.CheckUpdated();
+                    if (updated == true) // updated
+                        this.Image.Refresh();
+                    else if (updated == null) // removed
+                        this.Image = null;
+                }
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
 
         #endregion
 

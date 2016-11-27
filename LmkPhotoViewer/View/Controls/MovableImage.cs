@@ -146,7 +146,10 @@ namespace LmkPhotoViewer.View.Controls
 
             var image = e.NewValue as LmkImage;
             if (image == null)
+            {
+                control.imageControl.Source = null;
                 return;
+            }
 
             control.imageControl.Source = image.ToWriteableBitmap();
             control.FitImage();

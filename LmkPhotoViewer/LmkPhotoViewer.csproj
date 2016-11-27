@@ -149,6 +149,7 @@
     <Compile Include="Config\Startup.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Exceptions\CommandArgumentException.cs" />
+    <Compile Include="Model\FileInfo.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\Controls\MovableImageState.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

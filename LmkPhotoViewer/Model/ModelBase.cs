@@ -1,17 +1,18 @@
-using System;
-using System.Linq;
-using GalaSoft.MvvmLight;
-using LmkImageLib;
-using LmkImageLib.Wpf;
-using GalaSoft.MvvmLight.CommandWpf;
-using System.Windows.Input;
-using LmkPhotoViewer.View.Controls;
-using System.Windows.Media;
-using System.ComponentModel;
-using System.Linq.Expressions;
-
 namespace LmkPhotoViewer.Model
 {
+    using System;
+    using System.Linq;
+    using GalaSoft.MvvmLight;
+    using LmkImageLib;
+    using LmkImageLib.Wpf;
+    using GalaSoft.MvvmLight.CommandWpf;
+    using System.Windows.Input;
+    using LmkPhotoViewer.View.Controls;
+    using System.Windows.Media;
+    using System.ComponentModel;
+    using System.Linq.Expressions;
+
+
     public class ModelBase : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged member
