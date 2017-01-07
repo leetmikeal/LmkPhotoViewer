@@ -22,10 +22,20 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
         <controls:MovableImage 
+            Grid.Row="0"
+            Grid.Column="0"
             Source="{Binding Image.Source}" 
             Matrix="{Binding ImageViewState.Matrix}"
             ZoomStep="{Binding ImageViewState.ZoomStep}"
+            Background="LightCyan"
             />
     </Grid>
 </Window>
