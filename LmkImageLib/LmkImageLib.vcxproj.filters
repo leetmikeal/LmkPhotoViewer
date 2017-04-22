@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src/AssemblyInfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkBit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkImage.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkImageLib.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkMatrix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkOperatorSet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkOperatorSetUm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkPointDbl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkPointInt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkRectangleDbl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkRectangleInt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkRegion.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/LmkVector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/Stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src/StdafxUm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include/LmkBase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkBit.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkImage.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkImageLib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkMatrix.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkOperatorSet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkOperatorSetUm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkPointDbl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkPointInt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkRectangleDbl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkRectangleInt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkRegion.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkVector.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/Stdafx.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/StdafxUm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{2854d856-d589-440a-8777-6b2e46dadb4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{f61ca68e-3835-4c4c-af06-423ef9c46bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{aff92184-cbaf-4824-b17b-9f42193b8a9c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource/app.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -7,8 +7,8 @@
     <ProjectGuid>{0C1D1252-E7E5-4532-88C6-2ABED8446FDA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LmkImageLib</RootNamespace>
-    <AssemblyName>LmkImageLib</AssemblyName>
+    <RootNamespace>LmkImageLib.Wpf</RootNamespace>
+    <AssemblyName>LmkImageLib.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -85,7 +85,7 @@
     <Compile Include="Wpf\LmkImage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LmkImageClrLib\LmkImageClrLib.vcxproj">
+    <ProjectReference Include="..\LmkImageLib\LmkImageLib.vcxproj">
       <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
       <Name>LmkImageClrLib</Name>
     </ProjectReference>

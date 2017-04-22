@@ -22,7 +22,7 @@
     <ProjectGuid>{654D58A9-F353-4D85-A0F7-28AFFFF74C49}</ProjectGuid>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>LmkImageClrLib</RootNamespace>
+    <RootNamespace>LmkImageLib</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -109,7 +109,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -131,7 +131,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world310.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -145,54 +145,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LmkBase.h" />
-    <ClInclude Include="LmkBit.h" />
-    <ClInclude Include="LmkImage.h" />
-    <ClInclude Include="LmkImageClrLib.h" />
-    <ClInclude Include="LmkMatrix.h" />
-    <ClInclude Include="LmkOperatorSet.h" />
-    <ClInclude Include="LmkOperatorSetUm.h" />
-    <ClInclude Include="LmkPointDbl.h" />
-    <ClInclude Include="LmkPointInt.h" />
-    <ClInclude Include="LmkRectangleDbl.h" />
-    <ClInclude Include="LmkRectangleInt.h" />
-    <ClInclude Include="LmkRegion.h" />
-    <ClInclude Include="LmkVector.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="StdafxUm.h" />
+    <ClInclude Include="include/LmkBase.h" />
+    <ClInclude Include="include/LmkBit.h" />
+    <ClInclude Include="include/LmkImage.h" />
+    <ClInclude Include="include/LmkImageLib.h" />
+    <ClInclude Include="include/LmkMatrix.h" />
+    <ClInclude Include="include/LmkOperatorSet.h" />
+    <ClInclude Include="include/LmkOperatorSetUm.h" />
+    <ClInclude Include="include/LmkPointDbl.h" />
+    <ClInclude Include="include/LmkPointInt.h" />
+    <ClInclude Include="include/LmkRectangleDbl.h" />
+    <ClInclude Include="include/LmkRectangleInt.h" />
+    <ClInclude Include="include/LmkRegion.h" />
+    <ClInclude Include="include/LmkVector.h" />
+    <ClInclude Include="resource\resource.h" />
+    <ClInclude Include="include/Stdafx.h" />
+    <ClInclude Include="include/StdafxUm.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="LmkBase.cpp" />
-    <ClCompile Include="LmkBit.cpp" />
-    <ClCompile Include="LmkImage.cpp" />
-    <ClCompile Include="LmkImageClrLib.cpp" />
-    <ClCompile Include="LmkMatrix.cpp" />
-    <ClCompile Include="LmkOperatorSet.cpp" />
-    <ClCompile Include="LmkOperatorSetUm.cpp" />
-    <ClCompile Include="LmkPointDbl.cpp" />
-    <ClCompile Include="LmkPointInt.cpp" />
-    <ClCompile Include="LmkRectangleDbl.cpp" />
-    <ClCompile Include="LmkRectangleInt.cpp" />
-    <ClCompile Include="LmkRegion.cpp" />
-    <ClCompile Include="LmkVector.cpp" />
-    <ClCompile Include="Stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    <ClCompile Include="src/AssemblyInfo.cpp" />
+    <ClCompile Include="src/LmkBase.cpp" />
+    <ClCompile Include="src/LmkBit.cpp" />
+    <ClCompile Include="src/LmkImage.cpp" />
+    <ClCompile Include="src/LmkImageLib.cpp" />
+    <ClCompile Include="src/LmkMatrix.cpp" />
+    <ClCompile Include="src/LmkOperatorSet.cpp" />
+    <ClCompile Include="src/LmkOperatorSetUm.cpp" />
+    <ClCompile Include="src/LmkPointDbl.cpp" />
+    <ClCompile Include="src/LmkPointInt.cpp" />
+    <ClCompile Include="src/LmkRectangleDbl.cpp" />
+    <ClCompile Include="src/LmkRectangleInt.cpp" />
+    <ClCompile Include="src/LmkRegion.cpp" />
+    <ClCompile Include="src/LmkVector.cpp" />
+    <ClCompile Include="src/Stdafx.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="StdafxUm.cpp" />
+    <ClCompile Include="src/StdafxUm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="app.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="app.ico" />
+    <ResourceCompile Include="resource/app.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -2,5 +2,5 @@
 
 #include "stdafx.h"
 
-#include "LmkImageClrLib.h"
+#include "LmkImageLib.h"
 
