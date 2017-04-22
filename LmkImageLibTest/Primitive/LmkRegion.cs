@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LmkImageLib;
 
 namespace LmkImageLibTest
 {
     [TestClass]
-    public class LmkRegion
+    public class LmkRegionTest
     {
         [TestMethod]
         public void TestConstructor001()

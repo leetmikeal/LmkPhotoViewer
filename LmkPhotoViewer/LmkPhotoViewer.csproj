@@ -203,14 +203,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\LmkImageLib\LmkImageLib.vcxproj">
-      <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
-      <Name>LmkImageClrLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LmkImageLib.Wpf\LmkImageLib.Wpf.csproj">
       <Project>{0c1d1252-e7e5-4532-88c6-2abed8446fda}</Project>
+      <Name>LmkImageLib.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LmkImageLib\LmkImageLib.vcxproj">
+      <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
       <Name>LmkImageLib</Name>
     </ProjectReference>
   </ItemGroup>

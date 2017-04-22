@@ -87,7 +87,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LmkImageLib\LmkImageLib.vcxproj">
       <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
-      <Name>LmkImageClrLib</Name>
+      <Name>LmkImageLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

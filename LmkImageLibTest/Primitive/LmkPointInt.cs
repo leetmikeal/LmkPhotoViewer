@@ -1,15 +1,16 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LmkImageLib;
 
 namespace LmkImageLibTest
 {
     [TestClass]
-    public class LmkRectangle
+    public class LmkPointIntTest
     {
         [TestMethod]
         public void TestConstructor001()
         {
-            LmkRectangle rectangle = new LmkRectangle();
+            LmkPointInt point = new LmkPointInt();
         }
     }
 }

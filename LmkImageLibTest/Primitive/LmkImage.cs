@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LmkImageLib;
 
 namespace LmkImageLibTest
 {
     [TestClass]
-    public class LmkImage
+    public class LmkImageTest
     {
         [TestMethod]
         public void TestConstructor001()

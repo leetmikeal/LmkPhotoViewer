@@ -86,11 +86,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Primitive\LmkPointDbl.cs" />
+    <Compile Include="Primitive\LmkRectangleDbl.cs" />
     <Compile Include="Primitive\LmkVector.cs" />
     <Compile Include="Primitive\LmkMatrix.cs" />
-    <Compile Include="Primitive\LmkPoint2d.cs" />
+    <Compile Include="Primitive\LmkPointInt.cs" />
     <Compile Include="Primitive\LmkBit.cs" />
-    <Compile Include="Primitive\LmkRectangle.cs" />
+    <Compile Include="Primitive\LmkRectangleInt.cs" />
     <Compile Include="Primitive\LmkRegion.cs" />
     <Compile Include="Primitive\LmkImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,10 +100,6 @@
   <ItemGroup>
     <ProjectReference Include="..\LmkImageLib\LmkImageLib.vcxproj">
       <Project>{654d58a9-f353-4d85-a0f7-28affff74c49}</Project>
-      <Name>LmkImageClrLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LmkImageLib.Wpf\LmkImageLib.Wpf.csproj">
-      <Project>{0c1d1252-e7e5-4532-88c6-2abed8446fda}</Project>
       <Name>LmkImageLib</Name>
     </ProjectReference>
   </ItemGroup>

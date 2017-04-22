@@ -5,12 +5,12 @@ using LmkImageLib;
 namespace LmkImageLibTest
 {
     [TestClass]
-    public class LmkMatrixTest
+    public class LmkPointDblTest
     {
         [TestMethod]
         public void TestConstructor001()
         {
-            LmkMatrix matrix = new LmkMatrix();
+            LmkPointDbl point = new LmkPointDbl();
         }
     }
 }

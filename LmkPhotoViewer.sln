@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LmkPhotoViewer", "LmkPhotoV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LmkImageLib.Wpf", "LmkImageLib.Wpf\LmkImageLib.Wpf.csproj", "{0C1D1252-E7E5-4532-88C6-2ABED8446FDA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LmkImageLib", "LmkImageLib\LmkImageLib.vcxproj", "{654D58A9-F353-4D85-A0F7-28AFFFF74C49}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LmkImageLibTest", "LmkImageLibTest\LmkImageLibTest.csproj", "{35FBE050-F066-437B-B1AD-4F4F00DC2C89}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LmkImageLib", "LmkImageLib\LmkImageLib.vcxproj", "{654D58A9-F353-4D85-A0F7-28AFFFF74C49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +35,6 @@ Global
 		{0C1D1252-E7E5-4532-88C6-2ABED8446FDA}.Release|x64.Build.0 = Release|x64
 		{0C1D1252-E7E5-4532-88C6-2ABED8446FDA}.Release|x86.ActiveCfg = Release|x86
 		{0C1D1252-E7E5-4532-88C6-2ABED8446FDA}.Release|x86.Build.0 = Release|x86
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x64.ActiveCfg = Debug|x64
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x64.Build.0 = Debug|x64
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x86.ActiveCfg = Debug|Win32
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x86.Build.0 = Debug|Win32
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x64.ActiveCfg = Release|x64
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x64.Build.0 = Release|x64
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x86.ActiveCfg = Release|Win32
-		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x86.Build.0 = Release|Win32
 		{35FBE050-F066-437B-B1AD-4F4F00DC2C89}.Debug|x64.ActiveCfg = Debug|x64
 		{35FBE050-F066-437B-B1AD-4F4F00DC2C89}.Debug|x64.Build.0 = Debug|x64
 		{35FBE050-F066-437B-B1AD-4F4F00DC2C89}.Debug|x86.ActiveCfg = Debug|x86
@@ -51,6 +43,14 @@ Global
 		{35FBE050-F066-437B-B1AD-4F4F00DC2C89}.Release|x64.Build.0 = Release|x64
 		{35FBE050-F066-437B-B1AD-4F4F00DC2C89}.Release|x86.ActiveCfg = Release|x86
 		{35FBE050-F066-437B-B1AD-4F4F00DC2C89}.Release|x86.Build.0 = Release|x86
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x64.ActiveCfg = Debug|x64
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x64.Build.0 = Debug|x64
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x86.ActiveCfg = Debug|Win32
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Debug|x86.Build.0 = Debug|Win32
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x64.ActiveCfg = Release|x64
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x64.Build.0 = Release|x64
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x86.ActiveCfg = Release|Win32
+		{654D58A9-F353-4D85-A0F7-28AFFFF74C49}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
