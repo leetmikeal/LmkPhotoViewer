@@ -18,11 +18,11 @@ using System.Windows.Shapes;
 namespace LmkPhotoViewer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AboutWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AboutWindow : Window
     {
-        public MainWindow()
+        public AboutWindow()
         {
             InitializeComponent();
 
@@ -31,21 +31,12 @@ namespace LmkPhotoViewer
 
         private void NotificationMessageReceived(NotificationMessage msg)
         {
-            if (msg.Notification == "ShowAbout")
+            if (msg.Notification == "Close")
             {
-                var about = new AboutWindow();
-                about.ShowDialog();
+                this.Close();
             }
         }
 
-        private void Window_PreviewDragOver(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, true))
-                e.Effects = DragDropEffects.Copy;
-            else
-                e.Effects = DragDropEffects.None;
-            e.Handled = true;
-        }
 
     }
 }

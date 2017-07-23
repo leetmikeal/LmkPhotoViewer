@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using GalaSoft.MvvmLight;
 
 namespace LmkPhotoViewer
 {
@@ -28,6 +29,8 @@ namespace LmkPhotoViewer
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            this.Resources["Locator"] = new ViewModel.ViewModelLocator();
+
             try
             {
                 if (e.Args != null && e.Args.Length > 0)

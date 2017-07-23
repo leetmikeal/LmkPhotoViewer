@@ -1,5 +1,6 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 using LmkImageLib;
 using LmkImageLib.Wpf;
 using LmkPhotoViewer.Model;
@@ -135,6 +136,19 @@ namespace LmkPhotoViewer.ViewModel
         #endregion
 
         #region Command
+
+        private RelayCommand pressF1KeyCommand;
+        public RelayCommand PressF1KeyCommand
+        {
+            get
+            {
+                return pressF1KeyCommand ?? (pressF1KeyCommand = new RelayCommand(() =>
+                {
+                    // Show about window.
+                    Messenger.Default.Send(new NotificationMessage("ShowAbout"));
+                }));
+            }
+        }
 
         private RelayCommand<DragEventArgs> dropCommand;
         public RelayCommand<DragEventArgs> DropCommand

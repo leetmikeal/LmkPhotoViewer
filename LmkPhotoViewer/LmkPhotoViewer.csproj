@@ -149,12 +149,18 @@
     <Compile Include="Config\Startup.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Exceptions\CommandArgumentException.cs" />
+    <Compile Include="Model\ApplicationInformation.cs" />
     <Compile Include="Model\FileInfo.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\Controls\MovableImageState.cs" />
+    <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\AboutWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -170,6 +176,9 @@
     <Compile Include="Model\DisplayImage.cs" />
     <Compile Include="View\Controls\MovableImage.cs" />
     <Compile Include="Model\Controls\Enums.cs" />
+    <Compile Include="View\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

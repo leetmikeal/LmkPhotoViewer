@@ -15,7 +15,13 @@
     Width="525"
     PreviewDragOver="Window_PreviewDragOver"
     AllowDrop="True"
+    DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
     >
+    <Window.InputBindings>
+        <KeyBinding Key="F1"
+                Modifiers="" 
+                Command="{Binding PressF1KeyCommand}" />
+    </Window.InputBindings>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Drop">
             <cmd:EventToCommand Command="{Binding DropCommand}" PassEventArgsToCommand="True" />
