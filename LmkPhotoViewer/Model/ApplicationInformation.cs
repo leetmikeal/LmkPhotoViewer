@@ -32,9 +32,13 @@
                 if(reference == null)
                 {
                     StringBuilder b = new StringBuilder();
-                    b.Append(@"SVG Rendering Engine" + Environment.NewLine);
+                    b.Append(@"SVG Rendering Engine, Microsoft Public License (Ms-PL)" + Environment.NewLine);
                     b.Append(@"http://svg.codeplex.com" + Environment.NewLine);
-                    b.Append(@"");
+                    b.Append(@"" + Environment.NewLine);
+                    b.Append(@"SVG rendering library for .Net, , Microsoft Public License (Ms-PL)" + Environment.NewLine);
+                    b.Append(@"https://github.com/dvdotsenko/SVG-Rendering-Engine-dotNet" + Environment.NewLine);
+                    b.Append(@"" + Environment.NewLine);
+                    b.Append(@"" + Environment.NewLine);
                     reference = b.ToString();
                 }
                 return reference;
