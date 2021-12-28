@@ -66,12 +66,6 @@
     <ClInclude Include="include/LmkMatrix.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include/LmkOperatorSet.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include/LmkOperatorSetUm.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include/LmkPointDbl.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -98,6 +92,12 @@
     </ClInclude>
     <ClInclude Include="resource\resource.h">
       <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkOperatorSet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include/LmkOperatorSetUm.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
