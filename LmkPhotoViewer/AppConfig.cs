@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using LmkPhotoViewer.Config;
+﻿using LmkPhotoViewer.Config;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +47,7 @@ namespace LmkPhotoViewer
             set
             {
                 start = value;
-                RaisePropertyChanged(() => Start);
+                SetProperty(ref start, value);
             }
         }
 
@@ -65,7 +65,7 @@ namespace LmkPhotoViewer
             set
             {
                 roaming = value;
-                RaisePropertyChanged(() => Roaming);
+                SetProperty(ref roaming, value);
             }
         }
 

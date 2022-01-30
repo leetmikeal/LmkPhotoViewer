@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
-    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"  
     xmlns:local="clr-namespace:LmkPhotoViewer"
     xmlns:view="clr-namespace:LmkPhotoViewer.View"
     xmlns:controls="clr-namespace:LmkPhotoViewer.View.Controls"
@@ -13,7 +12,6 @@
     Title="About"
     Height="300"
     Width="300"
-    DataContext="{Binding About, Mode=OneWay, Source={StaticResource Locator}}"
     >
     <Grid>
         <Grid.RowDefinitions>

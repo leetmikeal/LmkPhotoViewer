@@ -3,9 +3,9 @@
     <!--<vm:ViewModelLocator
             x:Key="Locator"
             d:IsDataSource="True"
-            xmlns:vm="clr-namespace:LmkPhotoViewer.ViewModel" />-->
+            xmlns:vm="clr-namespace:LmkPhotoViewer.ViewModel" />
     <ResourceDictionary>
       <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:LmkPhotoViewer.ViewModel" />
-    </ResourceDictionary>
+    </ResourceDictionary>-->
   </Application.Resources>
 </Application>
