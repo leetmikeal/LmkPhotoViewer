@@ -1,11 +1,13 @@
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using GalaSoft.MvvmLight.Messaging;
 using LmkImageLib;
 using LmkImageLib.Wpf;
+using LmkPhotoViewer.Messages;
 using LmkPhotoViewer.Model;
 using LmkPhotoViewer.Model.Controls;
 using LmkPhotoViewer.View.Controls;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using Microsoft.Toolkit.Mvvm.Messaging.Messages;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ using System.Windows.Media;
 
 namespace LmkPhotoViewer.ViewModel
 {
-    public class AboutViewModel : ViewModelBase
+    public class AboutViewModel : ObservableRecipient
     {
         /// <summary>
         /// Initializes a new instance of the AboutViewModel class.
@@ -61,7 +63,7 @@ namespace LmkPhotoViewer.ViewModel
                 return closeCommand ?? (closeCommand = new RelayCommand(() =>
                 {
                     // Close this window.
-                    Messenger.Default.Send(new NotificationMessage("Close"));
+                    WeakReferenceMessenger.Default.Send(new ActionMessage("Close"));
                 }));
             }
         }

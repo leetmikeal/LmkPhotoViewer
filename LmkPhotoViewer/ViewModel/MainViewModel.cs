@@ -1,8 +1,9 @@
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using LmkPhotoViewer.Messages;
 using LmkPhotoViewer.Model;
 using LmkPhotoViewer.Model.Controls;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -20,7 +21,7 @@ namespace LmkPhotoViewer.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableRecipient
     {
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -114,9 +115,8 @@ namespace LmkPhotoViewer.ViewModel
             }
             set
             {
-                image = value;
-                RaisePropertyChanged(() => Image);
-                RaisePropertyChanged(() => WindowTitle);
+                SetProperty(ref image, value);
+                OnPropertyChanged(nameof(WindowTitle));
             }
         }
 
@@ -133,8 +133,7 @@ namespace LmkPhotoViewer.ViewModel
             }
             set
             {
-                imageViewState = value;
-                RaisePropertyChanged(() => ImageViewState);
+                SetProperty(ref imageViewState, value);
             }
         }
 
@@ -150,7 +149,7 @@ namespace LmkPhotoViewer.ViewModel
                 return pressF1KeyCommand ?? (pressF1KeyCommand = new RelayCommand(() =>
                 {
                     // Show about window.
-                    Messenger.Default.Send(new NotificationMessage("ShowAbout"));
+                    WeakReferenceMessenger.Default.Send(new ActionMessage("ShowAbout"));
                 }));
             }
         }

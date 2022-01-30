@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using LmkPhotoViewer.Messages;
 using LmkPhotoViewer.ViewModel;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,14 @@ namespace LmkPhotoViewer
         {
             InitializeComponent();
 
-            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
+            this.DataContext = App.Current.Services.GetService(typeof(AboutViewModel));
+
+            WeakReferenceMessenger.Default.Register<ActionMessage>(this, NotificationMessageReceived);
         }
 
-        private void NotificationMessageReceived(NotificationMessage msg)
+        private void NotificationMessageReceived(object recipient, ActionMessage msg)
         {
-            if (msg.Notification == "Close")
+            if (msg.Response == "Close")
             {
                 this.Close();
             }

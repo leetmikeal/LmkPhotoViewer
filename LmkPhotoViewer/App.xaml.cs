@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LmkPhotoViewer.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using GalaSoft.MvvmLight;
 
 namespace LmkPhotoViewer
 {
@@ -25,11 +26,43 @@ namespace LmkPhotoViewer
 
             // if main window closed, the application close too.
             this.ShutdownMode = ShutdownMode.OnMainWindowClose;
+
+            Services = ConfigureServices();
         }
+
+        /// <summary>
+        /// Gets the current <see cref="App"/> instance in use
+        /// </summary>
+        public new static App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
+        /// </summary>
+        public IServiceProvider Services { get; }
+
+    /// <summary>
+    /// Configures the services for the application.
+    /// </summary>
+    private static IServiceProvider ConfigureServices()
+    {
+        var services = new ServiceCollection();
+
+        //services.AddSingleton<IFilesService, FilesService>();
+        //services.AddSingleton<ISettingsService, SettingsService>();
+        //services.AddSingleton<IClipboardService, ClipboardService>();
+        //services.AddSingleton<IShareService, ShareService>();
+        //services.AddSingleton<IEmailService, EmailService>();
+
+        // Viewmodels
+        services.AddTransient<MainViewModel>();
+        services.AddTransient<AboutViewModel>();
+
+        return services.BuildServiceProvider();
+    }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            this.Resources["Locator"] = new ViewModel.ViewModelLocator();
+            //this.Resources["Locator"] = new ViewModel.ViewModelLocator();
 
             try
             {

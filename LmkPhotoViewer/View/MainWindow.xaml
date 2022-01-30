@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
-    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"  
     xmlns:local="clr-namespace:LmkPhotoViewer"
     xmlns:controls="clr-namespace:LmkPhotoViewer.View.Controls"
     mc:Ignorable="d"
@@ -14,7 +13,6 @@
     Width="525"
     PreviewDragOver="Window_PreviewDragOver"
     AllowDrop="True"
-    DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
     >
     <Window.InputBindings>
         <KeyBinding Key="F1"
@@ -23,7 +21,7 @@
     </Window.InputBindings>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Drop">
-            <cmd:EventToCommand Command="{Binding DropCommand}" PassEventArgsToCommand="True" />
+            <i:InvokeCommandAction Command="{Binding DropCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>

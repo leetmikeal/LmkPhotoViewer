@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,7 +79,7 @@ namespace LmkPhotoViewer.Config
             set
             {
                 originalArgs = value;
-                RaisePropertyChanged(() => OriginalArgs);
+                SetProperty(ref originalArgs, value);
             }
         }
 
@@ -97,7 +97,7 @@ namespace LmkPhotoViewer.Config
             set
             {
                 filePath = value;
-                RaisePropertyChanged(() => FilePath);
+                SetProperty(ref filePath, value);
             }
         }
 

@@ -2,10 +2,8 @@ namespace LmkPhotoViewer.Model
 {
     using System;
     using System.Linq;
-    using GalaSoft.MvvmLight;
     using LmkImageLib;
     using LmkImageLib.Wpf;
-    using GalaSoft.MvvmLight.CommandWpf;
     using System.Windows.Input;
     using LmkPhotoViewer.View.Controls;
     using System.Windows.Media;
