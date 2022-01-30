@@ -119,7 +119,7 @@ namespace LmkPhotoViewer.View.Controls
                 return;
 
             var image = e.NewValue as LmkImage;
-            if (image == null)
+            if (image == null || image.Width == 0 || image.Height == 0)
             {
                 control.imageControl.Source = null;
                 return;
